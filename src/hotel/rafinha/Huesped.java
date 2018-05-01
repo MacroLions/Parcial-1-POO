@@ -7,8 +7,47 @@ package hotel.rafinha;
 
 /**
  *
- * @author Melissa
+ * @author Nuria
  */
 public class Huesped {
+    private String nombre;
+    private DUI dui;
+    private TarjetaDeCredito tarjeta;
+    //Como aún no esta hecha la clase reserva comente los atributos de ese tipo
+    //private reserva reserva1;
+    //private reserva reserva2;
+
+    public Huesped() {
+    }
+
+    public Huesped(String nombre, DUI dui, TarjetaDeCredito tarjeta) {
+        this.nombre = nombre;
+        this.dui = dui;
+        this.tarjeta = tarjeta;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public DUI getDui() {
+        return dui;
+    }
+
+    public void setDui(DUI dui) {
+        this.dui = dui;
+    }
+
+    public TarjetaDeCredito getTarjeta() {
+        return tarjeta;
+    }
+
+    public void setTarjeta(TarjetaDeCredito tarjeta) {
+        this.tarjeta = tarjeta;
+    }
     
 }
