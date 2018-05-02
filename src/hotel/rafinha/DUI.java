@@ -14,15 +14,17 @@ public class DUI {
     private String direccion;
     private String estadoCivil;
     private String genero;
+    private String numeroDui;
 
     public DUI() {
     }
 
-    public DUI(String nombre, String direccion, String estadoCivil, String genero) {
+    public DUI(String nombre, String direccion, String estadoCivil, String genero, String numeroDui) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.estadoCivil = estadoCivil;
         this.genero = genero;
+        this.numeroDui = numeroDui;
     }
 
     public String getNombre() {
@@ -57,13 +59,12 @@ public class DUI {
         this.genero = genero;
     }
 
-    public int[] getNumero() {
-        return numero;
+    public String getNumeroDui() {
+        return numeroDui;
     }
 
-    public void setNumero(int[] numero) {
-        this.numero = numero;
+    public void setNumeroDui(String numeroDui) {
+        this.numeroDui = numeroDui;
     }
-    
-    int [] numero= new int[10];//Arreglo para el numero unico del DUI
+        
 }
