@@ -13,17 +13,17 @@ public class Habitacion {
     private String codigo;
     private int numCuarto;
     private boolean disponibilidad;
-    //private piso piso;
+    private Piso piso;
     private double precioBase;
     
     public Habitacion(){
     }
 
-    public Habitacion(String codigo, int numCuarto, boolean disponibilidad, /*piso piso, */double precioBase) {
+    public Habitacion(String codigo, int numCuarto, boolean disponibilidad, Piso piso, double precioBase) {
         this.codigo = codigo;
         this.numCuarto = numCuarto;
         this.disponibilidad = disponibilidad;
-        //this.piso = piso;
+        this.piso = piso;
         this.precioBase = precioBase;
     }
 
@@ -51,13 +51,13 @@ public class Habitacion {
         this.disponibilidad = disponibilidad;
     }
 
-    /*public piso getPiso() {
+    public Piso getPiso() {
         return piso;
     }
 
-    public void setPiso(piso piso) {
+    public void setPiso(Piso piso) {
         this.piso = piso;
-    }*/
+    }
 
     public double getPrecioBase() {
         return precioBase;
