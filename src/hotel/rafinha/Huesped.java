@@ -11,12 +11,22 @@ package hotel.rafinha;
  */
 public class Huesped {
     private String nombre;
-    private DUI dui;
-    private TarjetaDeCredito tarjeta;
+    private String numeroDui;
+    private String numeroTarjetaCredito;
+    private String bancoTarjeta;
     private Reserva reserva1;
     private Reserva reserva2;
 
     public Huesped() {
+    }
+    
+    public Huesped(String nombre, String numeroDui, String numeroTarjetaCredito, String bancoTarjeta, Reserva reserva1, Reserva reserva2) {
+        this.nombre = nombre;
+        this.numeroDui = numeroDui;
+        this.numeroTarjetaCredito = numeroTarjetaCredito;
+        this.bancoTarjeta = bancoTarjeta;
+        this.reserva1 = reserva1;
+        this.reserva2 = reserva2;
     }
 
     public Reserva getReserva1() {
@@ -35,12 +45,6 @@ public class Huesped {
         this.reserva2 = reserva2;
     }
 
-    public Huesped(String nombre, DUI dui, TarjetaDeCredito tarjeta) {
-        this.nombre = nombre;
-        this.dui = dui;
-        this.tarjeta = tarjeta;
-    }
-
     public String getNombre() {
         return nombre;
     }
@@ -49,20 +53,28 @@ public class Huesped {
         this.nombre = nombre;
     }
 
-    public DUI getDui() {
-        return dui;
+    public String getNumeroDui() {
+        return numeroDui;
     }
 
-    public void setDui(DUI dui) {
-        this.dui = dui;
+    public void setNumeroDui(String numeroDui) {
+        this.numeroDui = numeroDui;
     }
 
-    public TarjetaDeCredito getTarjeta() {
-        return tarjeta;
+    public String getNumeroTarjetaCredito() {
+        return numeroTarjetaCredito;
     }
 
-    public void setTarjeta(TarjetaDeCredito tarjeta) {
-        this.tarjeta = tarjeta;
+    public void setNumeroTarjetaCredito(String numeroTarjetaCredito) {
+        this.numeroTarjetaCredito = numeroTarjetaCredito;
+    }
+
+    public String getBancoTarjeta() {
+        return bancoTarjeta;
+    }
+
+    public void setBancoTarjeta(String bancoTarjeta) {
+        this.bancoTarjeta = bancoTarjeta;
     }
 
 }
