@@ -13,9 +13,8 @@ public class Huesped {
     private String nombre;
     private DUI dui;
     private TarjetaDeCredito tarjeta;
-    //Como aún no esta hecha la clase reserva comente los atributos de ese tipo
-    //private reserva reserva1;
-    //private reserva reserva2;
+    private reserva reserva1;
+    private reserva reserva2;
 
     public Huesped() {
     }
