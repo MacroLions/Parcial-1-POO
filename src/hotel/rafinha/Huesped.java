@@ -65,20 +65,4 @@ public class Huesped {
         this.tarjeta = tarjeta;
     }
 
-    public Reserva getReserva1() {
-        return reserva1;
-    }
-
-    public void setReserva1(Reserva reserva1) {
-        this.reserva1 = reserva1;
-    }
-
-    public Reserva getReserva2() {
-        return reserva2;
-    }
-
-    public void setReserva2(Reserva reserva2) {
-        this.reserva2 = reserva2;
-    }
-    
 }
