@@ -67,5 +67,13 @@ public class Habitacion {
         this.precioBase = precioBase;
     }
     
+    public void Abverifier(){
+        if(this.disponibilidad == true){
+            System.out.println("Disponible");
+        }
+        else{
+        System.out.println("Nope");
+        }
+    }
     
 }
