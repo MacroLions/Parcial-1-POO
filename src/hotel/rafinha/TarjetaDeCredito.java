@@ -13,14 +13,16 @@ public class TarjetaDeCredito {
     private String titular;
     private String bancoAfiliado;
     private String tipoDeCuenta;
+    private String codigoCuenta;
 
     public TarjetaDeCredito() {
     }
 
-    public TarjetaDeCredito(String titular, String bancoAfiliado, String tipoDeCuenta) {
+    public TarjetaDeCredito(String titular, String bancoAfiliado, String tipoDeCuenta, String codigoCuenta) {
         this.titular = titular;
         this.bancoAfiliado = bancoAfiliado;
         this.tipoDeCuenta = tipoDeCuenta;
+        this.codigoCuenta = codigoCuenta;
     }
 
     public String getTitular() {
@@ -47,14 +49,11 @@ public class TarjetaDeCredito {
         this.tipoDeCuenta = tipoDeCuenta;
     }
 
-    public int[] getCodigo() {
-        return codigo;
+    public String getCodigoCuenta() {
+        return codigoCuenta;
     }
 
-    public void setCodigo(int[] codigo) {
-        this.codigo = codigo;
+    public void setCodigoCuenta(String codigoCuenta) {
+        this.codigoCuenta = codigoCuenta;
     }
-    
-    int [] codigo= new int[8]; //Arreglo para el codigo de la tarjeta
-    
 }
