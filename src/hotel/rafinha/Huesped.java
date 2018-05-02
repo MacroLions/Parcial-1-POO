@@ -13,8 +13,8 @@ public class Huesped {
     private String nombre;
     private DUI dui;
     private TarjetaDeCredito tarjeta;
-    private reserva reserva1;
-    private reserva reserva2;
+    private Reserva reserva1;
+    private Reserva reserva2;
 
     public Huesped() {
     }
@@ -47,6 +47,22 @@ public class Huesped {
 
     public void setTarjeta(TarjetaDeCredito tarjeta) {
         this.tarjeta = tarjeta;
+    }
+
+    public Reserva getReserva1() {
+        return reserva1;
+    }
+
+    public void setReserva1(Reserva reserva1) {
+        this.reserva1 = reserva1;
+    }
+
+    public Reserva getReserva2() {
+        return reserva2;
+    }
+
+    public void setReserva2(Reserva reserva2) {
+        this.reserva2 = reserva2;
     }
     
 }
