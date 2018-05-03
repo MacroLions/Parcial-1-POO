@@ -16,7 +16,7 @@ public class Administrador {
    private ArrayList<Huesped> huespedes = new ArrayList();     
    
    
-   public void CreacionHuesped(){
+   public Huesped CreacionHuesped(){
        Scanner lector = new Scanner(System.in);
        String nombre = lector.nextLine();
        String numeroDui = lector.nextLine();
@@ -24,15 +24,37 @@ public class Administrador {
        
        Huesped newHuesped = new Huesped(nombre,numeroDui,numeroTarjetaCredito);
        
+       //Se agrega a la lista de huespedes.
+       //this.huespedes.add(newHuesped);
+       //Este this podría ir en el menú, pero lo dejaré aquí para mientras.
+       
+       //Return por si se usa luego???? Si no, se cambiaria el tipo de funcion a void.
+       return newHuesped;
+       
        
    }
    
-   public void CreacionReserva(Huesped huesped, Paquete paquete, Habitacion habitacion, int dias){
-      CreacionHuesped();
+   public void CreacionReserva(Paquete paquete, Habitacion habitacion){
+      Huesped newHuesped =CreacionHuesped();
+      //Aquí se creo el huesped con la funcion anterior.
+      
       Scanner lector = new Scanner(System.in);
-      String huesped = lector.nextLine();
-      String paquete = lector.nextLine();
-      String habitacion= lector.nextLine();
+      int dias = lector.nextInt();
+      //Dias a reservar, es facil porque solo es un int.
+      
+      //Ahora el problema es con paquete y habitación. Que no estoy segura si sería una funcion a lo "Escoger paquete" y que se revise la lista. al igual que habitacion.
+      Reserva newReserva = new Reserva(newHuesped,paquete,habitacion,dias);
+      
    }
    
+   public void BorrarPiso(Piso piso){
+       if(this.pisos.contains(piso)){
+           int borrador = this.pisos.indexOf(piso);
+           this.pisos.remove(borrador);
+       }
+       else{
+           System.out.println("El piso no existe.");
+       }
+       
+   }
    }
