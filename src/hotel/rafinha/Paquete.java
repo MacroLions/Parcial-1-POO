@@ -17,8 +17,8 @@ public class Paquete {
     public Paquete(){
     }
 
-    public Paquete(String nombre, String summary, double precioExtra) {
-        this.nombre = nombre;
+    public Paquete(String nombrePaquete, String summary, double precioExtra) {
+        this.nombre = nombrePaquete;
         this.summary = summary;
         this.precioExtra = precioExtra;
     }
@@ -46,7 +46,5 @@ public class Paquete {
     public void setPrecioExtra(double precioExtra) {
         this.precioExtra = precioExtra;
     }
-    
-    
     
 }
