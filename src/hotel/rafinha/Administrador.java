@@ -16,7 +16,7 @@ public class Administrador {
    private ArrayList<Huesped> huespedes = new ArrayList();     
    
    
-   public void Creacionhuesped(){
+   public void CreacionHuesped(){
        Scanner lector = new Scanner(System.in);
        String nombre = lector.nextLine();
        String numeroDui = lector.nextLine();
@@ -28,7 +28,11 @@ public class Administrador {
    }
    
    public void CreacionReserva(Huesped huesped, Paquete paquete, Habitacion habitacion, int dias){
-    
+      CreacionHuesped();
+      Scanner lector = new Scanner(System.in);
+      String huesped = lector.nextLine();
+      String paquete = lector.nextLine();
+      String habitacion= lector.nextLine();
    }
    
    }
