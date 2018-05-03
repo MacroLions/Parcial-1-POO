@@ -25,12 +25,13 @@ public class HotelRafinha {
         System.out.print("Contraseña: ");
         String contra= dato.nextLine().toUpperCase();
         
-        while(usuario=="USUARIO" && contra=="CONTRASENIA"){
+        while(usuario!="USUARIO" && contra!="CONTRASENIA"){
             System.out.println("Usuario o contraseña incorrectos, intentelo de nuevo");
-            System.out.println("Usuario: ");
+            System.out.print("Usuario: ");
             usuario= dato.nextLine().toUpperCase();
-            System.out.println("Contraseña: ");
+            System.out.print("Contraseña: ");
             contra= dato.nextLine().toUpperCase();
+            break;
         }
         
         System.out.println("¡¡¡¡¡¡¡BIENVENIDO ADMINISTRADOR DEL HOTEL 'VIÑA RAFINHA'!!!!!!! :D ");

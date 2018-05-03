@@ -67,11 +67,24 @@ public class Administrador {
       
       Scanner lector = new Scanner(System.in);
       int dias = lector.nextInt();
-      //Dias a reservar, es facil porque solo es un int.
+      //Dias a reservar, es facil porque solo es un int.   
       
       //Ahora el problema es con paquete y habitación. Que no estoy segura si sería una funcion a lo "Escoger paquete" y que se revise la lista. al igual que habitacion.
       Reserva newReserva = new Reserva(newHuesped,paquete,habitacion,dias);
+      //agrega reserva a su correspondiente Array
+      reservas.add(newReserva);
       
+      //imprime todo lo que hay en el array
+      for ( int i = 0; i < reservas.size(); i++ )
+          System.out.println(reservas.get(i));
+   }
+   
+   public void VerReserva(){
+       System.out.println("Ingrese numero de reserva: ");
+       
+       for (int numReserva = 0; numReserva < reservas.size(); numReserva++)
+           System.out.println("Reserva es: ");
+       
    }
    
    public void BorrarPiso(Piso piso){
