@@ -1,5 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * To change this lic
+ense hage hotel.rafinha;
+import java.util.ArrayList;
+import eader, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -14,6 +17,30 @@ public class Administrador {
    private ArrayList<Piso> pisos = new ArrayList();     
    private ArrayList<Reserva> reservas = new ArrayList(); 
    private ArrayList<Huesped> huespedes = new ArrayList();     
+   
+   //MENU
+   public void menuPrincipal(){
+       System.out.println("** MENU PRINCIPAL **");
+       int opcion = 0;
+       switch(opcion){
+           case 1:
+               System.out.println("** MENU RESERVACION **");
+               System.out.println("1. Agregar Reservacion ");
+               System.out.println("2. Eliminar reservacion ");
+               System.out.println("3. Ver reservacion ");
+               System.out.println("4. Modificar reservacion");
+               System.out.println("5. Verificar Reserva");
+               break;
+           case 2:
+               System.out.println("** ADMINISTRADOR **");
+               System.out.println("1. Agregar Piso ");
+               System.out.println("2. Eliminar Piso ");
+               System.out.println("3. Agregar huesped");
+
+               break;
+}    
+
+   }
    
    
    public Huesped CreacionHuesped(){
@@ -48,7 +75,7 @@ public class Administrador {
    }
    
    public void BorrarPiso(Piso piso){
-       //Este Borrar Piso está malo, debe usar la logica del agregar piso de abajo, o mejor dicho falta parte del codigo.
+       //Si quieren hagan este en base al de agregar piso >:3c
        if(this.pisos.contains(piso)){
            int borrador = this.pisos.indexOf(piso);
            this.pisos.remove(borrador);
@@ -61,16 +88,21 @@ public class Administrador {
    
    public void AgregarPiso(char identificador){
        
-       //Aquí es la logica de Estructuras dinamicas, but i'm stuck :3 Help.
-       for(Piso a: this.pisos){
-           if(a.getIdentificador()==identificador){
+       int contador=0;
+       boolean pisoExiste=false;
+       
+       while(contador<=this.pisos.size()){
+           for(Piso a: this.pisos){
+            if(a.getIdentificador()==identificador){
                System.out.println("El piso ya existe.");
+               pisoExiste=true;
+            }
            }
-           else{
-           }
-           
        }
-           
+       if(pisoExiste==false){
+           Piso pisoNuevo =new Piso(identificador);
+       }
    }
+       
    
    }
