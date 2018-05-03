@@ -13,5 +13,6 @@ public class Administrador {
    Reserva[] reservasHechas =  new Reserva[10];
    Piso[] reservaPiso = new Piso[10];
    Habitacion[] habiotacionesReservadas = new Habitacion[10];
+   //njknjknkm
    
 }
