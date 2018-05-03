@@ -4,13 +4,33 @@
  * and open the template in the editor.
  */
 package hotel.rafinha;
+import java.util.ArrayList;
 import java.util.Scanner;
 /*
  *
  * @author Diana
  */
 public class Administrador {
-   Reserva[] reservasHechas =  new Reserva[10];
-   Piso[] reservaPiso = new Piso[10];
-   Habitacion[] habiotacionesReservadas = new Habitacion[10];       
+   private ArrayList<Piso> pisos = new ArrayList();     
+   private ArrayList<Reserva> reservas = new ArrayList(); 
+   private ArrayList<Huesped> huespedes = new ArrayList();     
+   
+   
+   public void Creacionhuesped(){
+       Scanner lector = new Scanner(System.in);
+       String nombre = lector.nextLine();
+       String numeroDui = lector.nextLine();
+       String numeroTarjetaCredito = lector.nextLine();
+       String bancoTarjeta = lector.nextLine();
+       //Por qué es necesario el nombre del banco de la tarjeta...?//
+       
+       Huesped newHuesped = new Huesped(nombre,numeroDui,numeroTarjetaCredito,bancoTarjeta);
+       
+       
+   }
+   
+   public void CreacionReserva(Huesped huesped, Paquete paquete, Habitacion habitacion, int dias){
+    
+   }
+   
    }
