@@ -12,15 +12,15 @@ import java.util.ArrayList;
  * @author Maishi
  */
 public class Piso {
-    private String identificador;
+    private char identificador;
     private boolean disponibilidad;
     private ArrayList<Habitacion> habitaciones = new ArrayList();
 
-    public String getIdentificador() {
+    public char getIdentificador() {
         return identificador;
     }
 
-    public void setIdentificador(String identificador) {
+    public void setIdentificador(char identificador) {
         this.identificador = identificador;
     }
 
