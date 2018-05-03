@@ -20,13 +20,11 @@ public class Huesped {
     public Huesped() {
     }
     
-    public Huesped(String nombre, String numeroDui, String numeroTarjetaCredito, String bancoTarjeta, Reserva reserva1, Reserva reserva2) {
+    public Huesped(String nombre, String numeroDui, String numeroTarjetaCredito, String bancoTarjeta) {
         this.nombre = nombre;
         this.numeroDui = numeroDui;
         this.numeroTarjetaCredito = numeroTarjetaCredito;
         this.bancoTarjeta = bancoTarjeta;
-        this.reserva1 = reserva1;
-        this.reserva2 = reserva2;
     }
 
     public Reserva getReserva1() {
