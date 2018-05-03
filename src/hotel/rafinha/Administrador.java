@@ -48,6 +48,7 @@ public class Administrador {
    }
    
    public void BorrarPiso(Piso piso){
+       //Este Borrar Piso está malo, debe usar la logica del agregar piso de abajo, o mejor dicho falta parte del codigo.
        if(this.pisos.contains(piso)){
            int borrador = this.pisos.indexOf(piso);
            this.pisos.remove(borrador);
@@ -57,4 +58,19 @@ public class Administrador {
        }
        
    }
+   
+   public void AgregarPiso(char identificador){
+       
+       //Aquí es la logica de Estructuras dinamicas, but i'm stuck :3 Help.
+       for(Piso a: this.pisos){
+           if(a.getIdentificador()==identificador){
+               System.out.println("El piso ya existe.");
+           }
+           else{
+           }
+           
+       }
+           
+   }
+   
    }
