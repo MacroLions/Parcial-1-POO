@@ -21,10 +21,8 @@ public class Administrador {
        String nombre = lector.nextLine();
        String numeroDui = lector.nextLine();
        String numeroTarjetaCredito = lector.nextLine();
-       String bancoTarjeta = lector.nextLine();
-       //Por qué es necesario el nombre del banco de la tarjeta...?//
        
-       Huesped newHuesped = new Huesped(nombre,numeroDui,numeroTarjetaCredito,bancoTarjeta);
+       Huesped newHuesped = new Huesped(nombre,numeroDui,numeroTarjetaCredito);
        
        
    }
