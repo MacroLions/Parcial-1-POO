@@ -27,6 +27,10 @@ public class Huesped {
         this.bancoTarjeta = bancoTarjeta;
     }
 
+    Huesped(String nombre, String numeroDui, String numeroTarjetaCredito) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public Reserva getReserva1() {
         return reserva1;
     }
