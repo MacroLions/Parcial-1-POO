@@ -11,6 +11,7 @@ package hotel.rafinha;
  */
 public class Reserva {
     private Paquete paquete;
+    private Piso piso;
     private Habitacion habitacion;
     private double precioTotal;
     private Huesped huesped;
@@ -38,7 +39,11 @@ public class Reserva {
         }
     }
     public void calcularPreciototal(){
-        this.precioTotal=(this.habitacion.getPrecioBase() + this.paquete.getPrecioExtra())*this.dias;
+        if(this.piso == ('A','B','C','D')){
+            this.precioTotal=(this.habitacion.getPrecioBase() + this.paquete.getPrecioExtra())*this.dias;
+        }else{
+            this.precioTotal = (this.habitacion.getPrecioBase() + this.paquete.getPrecioExtra() + (this.habitacion.getPrecioBase()*0.1))*this.dias;
+        }
         
     }
     
