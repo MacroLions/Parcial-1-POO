@@ -13,22 +13,16 @@ public class Huesped {
     private String nombre;
     private String numeroDui;
     private String numeroTarjetaCredito;
-    private String bancoTarjeta;
     private Reserva reserva1;
     private Reserva reserva2;
 
     public Huesped() {
     }
     
-    public Huesped(String nombre, String numeroDui, String numeroTarjetaCredito, String bancoTarjeta) {
+    public Huesped(String nombre, String numeroDui, String numeroTarjetaCredito) {
         this.nombre = nombre;
         this.numeroDui = numeroDui;
         this.numeroTarjetaCredito = numeroTarjetaCredito;
-        this.bancoTarjeta = bancoTarjeta;
-    }
-
-    Huesped(String nombre, String numeroDui, String numeroTarjetaCredito) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public Reserva getReserva1() {
@@ -69,14 +63,6 @@ public class Huesped {
 
     public void setNumeroTarjetaCredito(String numeroTarjetaCredito) {
         this.numeroTarjetaCredito = numeroTarjetaCredito;
-    }
-
-    public String getBancoTarjeta() {
-        return bancoTarjeta;
-    }
-
-    public void setBancoTarjeta(String bancoTarjeta) {
-        this.bancoTarjeta = bancoTarjeta;
     }
 
 }
