@@ -103,6 +103,36 @@ public class Administrador {
            Piso pisoNuevo =new Piso(identificador);
        }
    }
+   
+   public void CambiarPrecioBaseSimple(int newPrecio){
+       int ParImpar =1;
+       for(Piso a: this.pisos){
+           for(Habitacion b:a.getHabitaciones()){
+               if(ParImpar==1){
+                    b.setPrecioBase(newPrecio);
+                    ParImpar=2;
+               }
+               else{
+                   ParImpar=1;
+               }
+           }
+       }
+   }
+   
+   public void CambiarPrecioBaseDoble(int newPrecio){
+       int ParImpar=1;
+       for(Piso a: this.pisos){
+           for(Habitacion b:a.getHabitaciones()){
+               if(ParImpar==2){
+                   b.setPrecioBase(newPrecio);
+                   ParImpar=1;
+               }
+               else{
+                   ParImpar=2;
+               }
+           }
+       }
+   }
        
    
    }
