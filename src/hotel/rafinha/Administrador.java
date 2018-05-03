@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package hotel.rafinha;
-
+import java.util.Scanner;
 /*
  *
  * @author Diana
@@ -12,7 +12,5 @@ package hotel.rafinha;
 public class Administrador {
    Reserva[] reservasHechas =  new Reserva[10];
    Piso[] reservaPiso = new Piso[10];
-   Habitacion[] habiotacionesReservadas = new Habitacion[10];
-   //njknjknkm
-   
-}
+   Habitacion[] habiotacionesReservadas = new Habitacion[10];       
+   }
