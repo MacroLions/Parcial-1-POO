@@ -71,12 +71,28 @@ public class Administrador {
       
       //Ahora el problema es con paquete y habitación. Que no estoy segura si sería una funcion a lo "Escoger paquete" y que se revise la lista. al igual que habitacion.
       Reserva newReserva = new Reserva(newHuesped,paquete,habitacion,dias);
+      newReserva.calcularPreciototal(ComprobarPisoReserva(newReserva));
       //agrega reserva a su correspondiente Array
       reservas.add(newReserva);
       
       //imprime todo lo que hay en el array
       for ( int i = 0; i < reservas.size(); i++ )
           System.out.println(reservas.get(i));
+   }
+   
+   public boolean ComprobarPisoReserva(Reserva reserva){
+       Piso pisoRevisar=reserva.getPiso();
+       int UltimoPisoID=this.pisos.size();
+       int PenultimoPisoID=UltimoPisoID-1;
+       if(pisoRevisar.getIdentificador()==this.pisos.get(UltimoPisoID).getIdentificador()){
+           return true;
+       }
+       else if(pisoRevisar.getIdentificador()==this.pisos.get(PenultimoPisoID).getIdentificador()){
+           return true;
+       }
+       else{
+           return false;
+       }
    }
    
    public void VerReserva(){
