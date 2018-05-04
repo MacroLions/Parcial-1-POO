@@ -16,7 +16,8 @@ import java.util.Scanner;
 public class Administrador {
    private ArrayList<Piso> pisos = new ArrayList();     
    private ArrayList<Reserva> reservas = new ArrayList(); 
-   private ArrayList<Huesped> huespedes = new ArrayList();     
+   private ArrayList<Huesped> huespedes = new ArrayList(); 
+   private ArrayList<Paquete> paquetes = new ArrayList();
      
    
    public Huesped CreacionHuesped(){
@@ -249,7 +250,7 @@ public class Administrador {
                System.out.println("Precio del paquete: ");
                double precio = scan.nextDouble();
                packBasico.setPrecioExtra(precio);
-               //Agregar un Paquete.add(packBasico), hay que hacer un Array para los packs?
+               this.paquetes.add(packBasico);
                break;
            case 2:
                Paquete packPremium = new Paquete();
@@ -262,13 +263,16 @@ public class Administrador {
                System.out.println("Precio del paquete: ");
                double price = scan.nextDouble();
                packPremium.setPrecioExtra(price);
-               //Agregar un Paquete.add(packPremium)
+               this.paquetes.add(packPremium);
                break;
            default:
                System.out.println("Opcion no valida.");
        }
    }
    
+      public void HabilitarHabitacion(){
+          
+      }
    
    public void Menu(){
        System.out.println("** MENU PRINCIPAL **");
