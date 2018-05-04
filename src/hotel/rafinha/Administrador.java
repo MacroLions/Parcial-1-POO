@@ -153,7 +153,7 @@ public class Administrador {
                            
                            //Aquí tomara el numero del tamaño de la lista.
                            int numb=a.getHabitaciones().size();
-                           newhab.setNumCuarto(numb);
+                           newhab.setNumCuarto(numb+1);
                            newhab.setPiso(a);
                            a.getHabitaciones().add(newhab);
                            break;
