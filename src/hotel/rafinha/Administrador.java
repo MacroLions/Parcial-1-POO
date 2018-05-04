@@ -195,6 +195,42 @@ public class Administrador {
            }
        }
    }
+   
+      public void ModPacks(){
+       System.out.println("Elija el paquete a modificar:");
+       System.out.println("1)Paquete Basico");
+       System.out.println("2)Paquete Premium");
+       
+       Scanner scan = new Scanner(System.in);
+       int opc = scan.nextInt();
+       
+       switch(opc){//poruqe no agarra las nuevas variables?
+           case 1://Also probablemente no este bien hecho lo que va dentro de los cases.
+               Paquete packBasico = new(Paquete);
+               System.out.print("Ingrese el nombre del paquete: ");
+               packBasico.getNombre();System.out.println("\n");
+               System.out.println("Descripcion del paquete:");
+               packBasico.getSummary();
+               System.out.println("Precio del paquete: ");
+               packBasico.getPrecioExtra();
+               //Agregar un Paquete.add(packBasico), hay que hacer un Array para los packs?
+               break;
+           case 2:
+               Paquete packPremium = new(Paquete);
+               System.out.print("Ingrese el nombre del paquete: ");
+               packPremium.getNombre();System.out.println("\n");
+               System.out.println("Descripcion del paquete:");
+               packPremium.getSummary();
+               System.out.println("Precio del paquete: ");
+               packPremium.getPrecioExtra();
+               //Agregar un Paquete.add(packPremium)
+               break;
+           default:
+               System.out.println("Opcion no valida.");
+       }
+   }
+   
+   
    public void Menu(){
        System.out.println("** MENU PRINCIPAL **");
         
