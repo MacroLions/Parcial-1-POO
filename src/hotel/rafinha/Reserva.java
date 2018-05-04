@@ -40,8 +40,9 @@ public class Reserva {
             
         }
     }
-    public void calcularPreciototal(){
-        if(this.piso.getIdentificador() == 'A' || this.piso.getIdentificador() == 'B' || this.piso.getIdentificador() == 'C' || this.piso.getIdentificador() == 'D' ){
+    public void calcularPreciototal(boolean comprobador){
+        
+        if(comprobador==false){
             this.precioTotal=(this.habitacion.getPrecioBase() + this.paquete.getPrecioExtra())*this.dias;
         }
         else{
@@ -52,4 +53,55 @@ public class Reserva {
         System.out.println("** RESERVA **");
         
     }
+
+    public Paquete getPaquete() {
+        return paquete;
     }
+
+    public void setPaquete(Paquete paquete) {
+        this.paquete = paquete;
+    }
+
+    public Piso getPiso() {
+        return piso;
+    }
+
+    public void setPiso(Piso piso) {
+        this.piso = piso;
+    }
+
+    public Habitacion getHabitacion() {
+        return habitacion;
+    }
+
+    public void setHabitacion(Habitacion habitacion) {
+        this.habitacion = habitacion;
+    }
+
+    public double getPrecioTotal() {
+        return precioTotal;
+    }
+
+    public void setPrecioTotal(double precioTotal) {
+        this.precioTotal = precioTotal;
+    }
+
+    public Huesped getHuesped() {
+        return huesped;
+    }
+
+    public void setHuesped(Huesped huesped) {
+        this.huesped = huesped;
+    }
+
+    public int getDias() {
+        return dias;
+    }
+
+    public void setDias(int dias) {
+        this.dias = dias;
+    }
+    
+    
+}
+
