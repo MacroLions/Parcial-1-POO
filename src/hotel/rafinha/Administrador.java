@@ -179,9 +179,9 @@ public class Administrador {
                 if(a.getIdentificador() == identificador){
                     pisoExiste = true;
                     for(Habitacion b: a.getHabitaciones()){
-                        if(b.numHabitacion == numHabitacion){
+                        if(b.getNumCuarto() == numHabitacion){
                             habExiste = true;
-                            a.habitaciones.remove(b);
+                            a.getHabitaciones().add(b);
                         }
                     }if(habExiste == false){
                         System.out.println("La habitacion no existe.");
