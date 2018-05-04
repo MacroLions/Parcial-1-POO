@@ -99,7 +99,7 @@ public class Administrador {
 
     }
 
-    public void BorrarPiso(char identificador) {
+    public void BorrarPiso(char identificador) {//ya
         int contador = 0;
         boolean pisoExiste = false;
 
@@ -117,7 +117,7 @@ public class Administrador {
         }
     }
 
-    public void AgregarPiso(char identificador) {
+    public void AgregarPiso(char identificador) {//ya
 
         int contador = 0;
         boolean pisoExiste = false;
@@ -135,7 +135,7 @@ public class Administrador {
         }
     }
 
-    public void AgregarHabitacion(char identificador) {
+    public void AgregarHabitacion(char identificador) { //ya
         int contador = 0;
         boolean pisoExiste = false;
 
@@ -172,7 +172,7 @@ public class Administrador {
 
     }
 
-    public void BorrarHabitacion(char identificador, int numHabitacion) {
+    public void BorrarHabitacion(char identificador, int numHabitacion) { //ya
         int contador = 0;
         boolean pisoExiste = false;
         boolean habExiste = false;
@@ -204,7 +204,7 @@ public class Administrador {
         }
     }
 
-    public void CambiarPrecioBaseSimple(int newPrecio) {
+    public void CambiarPrecioBaseSimple(int newPrecio) { //ya
         int ParImpar = 1;
         for (Piso a : this.pisos) {
             for (Habitacion b : a.getHabitaciones()) {
@@ -218,7 +218,7 @@ public class Administrador {
         }
     }
 
-    public void CambiarPrecioBaseDoble(int newPrecio) {
+    public void CambiarPrecioBaseDoble(int newPrecio) { //ya
         int ParImpar = 1;
         for (Piso a : this.pisos) {
             for (Habitacion b : a.getHabitaciones()) {
@@ -274,7 +274,7 @@ public class Administrador {
         }
     }
 
-    public void HabilitarHabitacion() {
+    public void HabilitarHabitacion() { //ya
         int habitacion = 0;
         char piso;
 
@@ -302,7 +302,7 @@ public class Administrador {
 
     }
 
-    public void DeshabilitarHabitacion() {
+    public void DeshabilitarHabitacion() {//ya
         int habitacion = 0;
         char piso;
 
@@ -330,7 +330,7 @@ public class Administrador {
 
     }
 
-    public void HabilitarPiso() {
+    public void HabilitarPiso() {//ya
         Scanner input = new Scanner(System.in);
         System.out.println("Pisos existentes: ");
         for (Piso a : this.pisos) {
@@ -348,7 +348,7 @@ public class Administrador {
 
     }
 
-    public void DeshabilitarPiso() {
+    public void DeshabilitarPiso() { //ya
         Scanner input = new Scanner(System.in);
         System.out.println("Pisos existentes: ");
         for (Piso a : this.pisos) {
@@ -381,38 +381,7 @@ public class Administrador {
 
     }
 
-    public void Menu() {
-        System.out.println("** MENU PRINCIPAL **");
-
-        System.out.println("** 1. MENU RESERVACION || 2. MENU ADMINISTRACION ** ");
-
-        Scanner lector = new Scanner(System.in);
-        int opcion = 0;
-        opcion = lector.nextInt();
-
-        //aun falta que se agregen los metodos dentro de cada uno
-        switch (opcion) {
-            case 1:
-                System.out.println("** MENU RESERVACION **");
-                System.out.println("1. Agregar Reservacion ");
-                this.CreacionHuesped();
-
-                System.out.println("2. Eliminar reservacion ");
-                System.out.println("3. Ver reservacion ");
-                System.out.println("4. Modificar reservacion");
-                System.out.println("5. Verificar Reserva");
-                break;
-            case 2:
-                System.out.println("** MENU ADMINISTRADOR **");
-                System.out.println("1. Agregar Piso ");
-                System.out.println("2. Eliminar Piso ");
-                System.out.println("3. Agregar huesped");
-
-                break;
-        }
-    }
-
-    public void configuracion() {
+    public void MenuConfiguracion() {
         Scanner lector = new Scanner(System.in);
 
         System.out.println("** MENU CONFIGURACION **");
@@ -484,6 +453,68 @@ public class Administrador {
                 CambiarPrecioBaseDoble(newPrecio1);
                 break;
             case 13:
+                break;
+        }
+    }
+
+    public void MenuReserva() {
+        System.out.println("** MENU RESERVA **");
+        System.out.println("1. Crear Reservacion ");
+        System.out.println("2. Ver reservaciones");
+
+        Scanner lector = new Scanner(System.in);
+        int eleccion;
+        eleccion = lector.nextInt();
+        switch (eleccion) {
+            case 1:
+                Paquete paquete;
+                Habitacion habitacion;
+                CreacionReserva(paquete, habitacion);
+                break;
+            case 2:
+                VerReserva();
+                break;
+        }
+
+    }
+
+    public void MenuPrincipal() {
+        System.out.println("** MENU PRINCIPAL **");
+
+        System.out.println("** 1. MENU RESERVACION || 2. MENU CONFIGURACION ** ");
+
+        Scanner lector = new Scanner(System.in);
+        
+        int opcion = 0;
+        opcion = lector.nextInt();
+        switch (opcion) {
+            case 1:
+                MenuReserva();
+                break;
+            case 2:
+                MenuConfiguracion();
+                break;
+
+        }
+
+        //aun falta que se agregen los metodos dentro de cada uno
+        switch (opcion) {
+            case 1:
+                System.out.println("** MENU RESERVACION **");
+                System.out.println("1. Agregar Reservacion ");
+                this.CreacionHuesped();
+
+                System.out.println("2. Eliminar reservacion ");
+                System.out.println("3. Ver reservacion ");
+                System.out.println("4. Modificar reservacion");
+                System.out.println("5. Verificar Reserva");
+                break;
+            case 2:
+                System.out.println("** MENU ADMINISTRADOR **");
+                System.out.println("1. Agregar Piso ");
+                System.out.println("2. Eliminar Piso ");
+                System.out.println("3. Agregar huesped");
+
                 break;
         }
     }
