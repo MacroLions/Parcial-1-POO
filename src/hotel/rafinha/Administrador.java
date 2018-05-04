@@ -138,22 +138,22 @@ public class Administrador {
        }
    }
    
-      public void AgregarHabitacion(char identificador){
+    public void AgregarHabitacion(char identificador){
        int contador = 0;
        boolean pisoExiste = false;
        
-       while(contador <= this.pisos.size()){
-           for(Piso a: this.pisos){
-               if(a.getIdentificador() == identificador){
-                   pisoExiste = true;
-                   for(Habitacion b: a.getHabitaciones()){
-                       if(a.habitaciones == null){
-                           Habitacion newhab = new(Habitacion);
-                           newhab.setNumCuarto(1);
-                           newhab.setPiso(a);
-                           a.habitaciones.add(contador, newhab);
-                           break;
-                       }else{
+        while(contador <= this.pisos.size()){
+            for(Piso a: this.pisos){
+                if(a.getIdentificador() == identificador){
+                    pisoExiste = true;
+                    for(Habitacion b: a.getHabitaciones()){
+                        if(a.habitaciones == null){
+                            Habitacion newhab = new(Habitacion);
+                            newhab.setNumCuarto(1);
+                            newhab.setPiso(a);
+                            a.habitaciones.add(contador, newhab);
+                            break;
+                        }else{
                            Habitacion newhab = new(Habitacion);
                            newhab.setNumCuarto();//No se que como ponerle para que tome el numero despues del ultimo.
                            newhab.setPiso(a);
