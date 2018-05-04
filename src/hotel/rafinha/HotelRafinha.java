@@ -37,34 +37,11 @@ public class HotelRafinha {
         System.out.println("¡¡¡¡¡¡¡BIENVENIDO ADMINISTRADOR DEL HOTEL 'VIÑA RAFINHA'!!!!!!! :D ");
         //Aqui iria el menu y los submenus.... ¡Es tu momento de brillar mango Dianita! ¡Make it shineee! Ref. Victorius cancion inicial
 
-        //MENU
-        System.out.println("** MENU PRINCIPAL **");
+        //OBJETO ADMINISTRADOR
+        Administrador admin = new Administrador();
         
-        System.out.println("** 1. MENU RESERVACION || 2. MENU ADMINISTRACION ** ");
+        admin.Menu();
         
-        Scanner lector = new Scanner(System.in);
-        int opcion = 0;
-        opcion = lector.nextInt();
-        
-        //aun falta que se agregen los metodos dentro de cada uno
-        switch (opcion) {
-            case 1:
-                System.out.println("** MENU RESERVACION **");
-                System.out.println("1. Agregar Reservacion ");
-                System.out.println("2. Eliminar reservacion ");
-                System.out.println("3. Ver reservacion ");
-                System.out.println("4. Modificar reservacion");
-                System.out.println("5. Verificar Reserva");
-                break;
-            case 2:
-                System.out.println("** MENU ADMINISTRADOR **");
-                System.out.println("1. Agregar Piso ");
-                System.out.println("2. Eliminar Piso ");
-                System.out.println("3. Agregar huesped");
-
-                break;
-        }
-
     }
     
 }
