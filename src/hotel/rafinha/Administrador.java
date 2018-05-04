@@ -269,15 +269,64 @@ public class Administrador {
                System.out.println("Opcion no valida.");
        }
    }
+      
    
       public void HabilitarHabitacion(){
+          int habitacion=0;
+          char piso;
+          
+          Scanner input = new Scanner(System.in);
+          for(Piso a: this.pisos){
+              for(Habitacion b: a.getHabitaciones()){
+                  System.out.println("Numero de habitacion: " + b.getNumCuarto() +" Piso de habitacion: "+b.getPiso()+" Disponibilidad: "+ b.isDisponibilidad());
+              }
+          }
+          System.out.print("Piso donde se encuentra habitación: ");
+          piso = input.next().charAt(0);
+          System.out.print("Numero de habitacion: ");
+          habitacion = input.nextInt();
+          
+          for(Piso a: this.pisos){
+              if(a.getIdentificador()==piso){
+                  for(Habitacion b:a.getHabitaciones()){
+                      if(b.getNumCuarto()==habitacion){
+                          b.setDisponibilidad(true);
+                      }
+                  }
+              }
+              
+          }
           
       }
       
       public void DeshabilitarHabitacion(){
+          int habitacion=0;
+          char piso;
+          
+          Scanner input = new Scanner(System.in);
+          for(Piso a: this.pisos){
+              for(Habitacion b: a.getHabitaciones()){
+                  System.out.println("Numero de habitacion: " + b.getNumCuarto() +" Piso de habitacion: "+b.getPiso()+" Disponibilidad: "+ b.isDisponibilidad());
+              }
+          }
+          System.out.print("Piso donde se encuentra habitación: ");
+          piso = input.next().charAt(0);
+          System.out.print("Numero de habitacion: ");
+          habitacion = input.nextInt();
+          
+          for(Piso a: this.pisos){
+              if(a.getIdentificador()==piso){
+                  for(Habitacion b:a.getHabitaciones()){
+                      if(b.getNumCuarto()==habitacion){
+                          b.setDisponibilidad(false);
+                      }
+                  }
+              }
+              
+          }
           
       }
-      
+          
       public void ModificarReserva(){
       }
       
