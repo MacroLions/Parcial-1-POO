@@ -57,6 +57,11 @@ public class Administrador {
       int dias = lector.nextInt();
       //Dias a reservar, es facil porque solo es un int.   
       
+      //Verifica que no tenga 7 o mas dias reservados
+      if (dias >= 7){
+          System.out.println("Máximo de días reservados. No es posible reservar más de 7 días");
+      }
+        
       //Ahora el problema es con paquete y habitación. Que no estoy segura si sería una funcion a lo "Escoger paquete" y que se revise la lista. al igual que habitacion.
       Reserva newReserva = new Reserva(newHuesped,paquete,habitacion,dias);
       newReserva.calcularPreciototal(ComprobarPisoReserva(newReserva));
