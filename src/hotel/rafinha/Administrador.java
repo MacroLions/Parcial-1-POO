@@ -168,6 +168,35 @@ public class Administrador {
        }       
        
    }
+    
+   public void BorrarHabitacion(char identificador, int numHabitacion){
+       int contador = 0;
+       boolean pisoExiste = false;
+       boolean habExiste = false;
+       
+        while(contador <= this.pisos.size()){
+            for(Piso a: this.pisos){
+                if(a.getIdentificador() == identificador){
+                    pisoExiste = true;
+                    for(Habitacion b: a.getHabitaciones()){
+                        if(b.numHabitacion == numHabitacion){
+                            habExiste = true;
+                            a.habitaciones.remove(b);
+                        }
+                    }if(habExiste == false){
+                        System.out.println("La habitacion no existe.");
+                        break;
+                    }
+                }
+            }if(pisoExiste == false){
+                System.out.println("El piso no existe.");
+                break;
+            }else if(pisoExiste == true && habExiste == false){
+                System.out.println("La habitacion no existe");
+                break;
+            }
+        }
+   }
    
    public void CambiarPrecioBaseSimple(int newPrecio){
        int ParImpar =1;
