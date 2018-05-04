@@ -40,7 +40,7 @@ public class HotelRafinha {
         //OBJETO ADMINISTRADOR
         Administrador admin = new Administrador();
         
-        admin.Menu();
+        admin.MenuPrincipal();
         
     }
     
