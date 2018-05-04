@@ -181,7 +181,8 @@ public class Administrador {
                     for(Habitacion b: a.getHabitaciones()){
                         if(b.getNumCuarto() == numHabitacion){
                             habExiste = true;
-                            a.getHabitaciones().add(b);
+                            a.getHabitaciones().remove(b);
+                            break;
                         }
                     }if(habExiste == false){
                         System.out.println("La habitacion no existe.");
