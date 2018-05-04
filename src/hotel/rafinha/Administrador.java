@@ -142,17 +142,20 @@ public class Administrador {
                 if(a.getIdentificador() == identificador){
                     pisoExiste = true;
                     for(Habitacion b: a.getHabitaciones()){
-                        if(a.habitaciones == null){
-                            Habitacion newhab = new(Habitacion);
+                        if(a.getHabitaciones() == null){
+                            Habitacion newhab = new Habitacion();
                             newhab.setNumCuarto(1);
                             newhab.setPiso(a);
-                            a.habitaciones.add(contador, newhab);
+                            a.getHabitaciones().add(newhab);
                             break;
                         }else{
-                           Habitacion newhab = new(Habitacion);
-                           newhab.setNumCuarto();//No se que como ponerle para que tome el numero despues del ultimo.
+                           Habitacion newhab = new Habitacion();
+                           
+                           //Aquí tomara el numero del tamaño de la lista.
+                           int numb=a.getHabitaciones().size();
+                           newhab.setNumCuarto(numb);
                            newhab.setPiso(a);
-                           a.habitaciones.add(contador, newhab);
+                           a.getHabitaciones().add(newhab);
                            break;
                        }
                    }
@@ -206,7 +209,7 @@ public class Administrador {
        
        switch(opc){//poruqe no agarra las nuevas variables?
            case 1://Also probablemente no este bien hecho lo que va dentro de los cases.
-               Paquete packBasico = new(Paquete);
+               Paquete packBasico = new Paquete();
                System.out.print("Ingrese el nombre del paquete: ");
                packBasico.getNombre();System.out.println("\n");
                System.out.println("Descripcion del paquete:");
@@ -216,7 +219,7 @@ public class Administrador {
                //Agregar un Paquete.add(packBasico), hay que hacer un Array para los packs?
                break;
            case 2:
-               Paquete packPremium = new(Paquete);
+               Paquete packPremium = new Paquete();
                System.out.print("Ingrese el nombre del paquete: ");
                packPremium.getNombre();System.out.println("\n");
                System.out.println("Descripcion del paquete:");
