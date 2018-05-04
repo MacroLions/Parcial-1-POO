@@ -47,7 +47,9 @@ public class Reserva {
         else{
             this.precioTotal = (this.habitacion.getPrecioBase() + this.paquete.getPrecioExtra() + (this.habitacion.getPrecioBase()*0.1))*this.dias;
         }
+    }
+    public void VerReserva(){
+        System.out.println("** RESERVA **");
         
     }
-}
-
+    }
