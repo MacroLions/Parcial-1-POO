@@ -10,7 +10,6 @@ package hotel.rafinha;
  * @author ricky
  */
 public class Habitacion {
-    private String codigo;
     private int numCuarto;
     private boolean disponibilidad;
     private Piso piso;
@@ -19,20 +18,11 @@ public class Habitacion {
     public Habitacion(){
     }
 
-    public Habitacion(String codigo, int numCuarto, boolean disponibilidad, Piso piso, double precioBase) {
-        this.codigo = codigo;
+    public Habitacion(int numCuarto, boolean disponibilidad, Piso piso, double precioBase) {
         this.numCuarto = numCuarto;
         this.disponibilidad = disponibilidad;
         this.piso = piso;
         this.precioBase = precioBase;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
     }
 
     public int getNumCuarto() {
