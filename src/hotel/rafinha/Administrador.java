@@ -422,15 +422,13 @@ public class Administrador {
         System.out.println("4. Agregar Piso ");
         System.out.println("5. Eliminar Piso ");
         System.out.println("6.Borrar Habitacion");
-        System.out.println("7.Bloquear Habitacion");
-        System.out.println("8.Desbloqueat habitacion");
-        System.out.println("9. Habilitar Habitacion");
-        System.out.println("10. Desabilitar Haitacion");
-        System.out.println("11.Bloquear piso");
-        System.out.println("12.Desbloquear piso");
-        System.out.println("13.Cambiar Precio Base Simple");
-        System.out.println("14.Cambiar Precio Base Doble");
-        System.out.println("15.Salir");
+        System.out.println("7. Habilitar Habitacion");
+        System.out.println("8. Desabilitar Habitacion");
+        System.out.println("9.Habilitar piso");
+        System.out.println("10.Deshabilitar piso");
+        System.out.println("11.Cambiar Precio Base Simple");
+        System.out.println("12.Cambiar Precio Base Doble");
+        System.out.println("13.Salir");
 
         Scanner input = new Scanner(System.in);
 
@@ -464,34 +462,29 @@ public class Administrador {
                 BorrarHabitacion(habitacion, num);
                 break;
             case 7:
-                break;
-            case 8:
-                break;
-            case 9:
                 HabilitarHabitacion();
                 break;
-            case 10:
+            case 8:
                 DeshabilitarHabitacion();
                 break;
-            case 11://bloquear piso
-
+            case 9:
+                HabilitarPiso();
                 break;
-            case 12://desbloquear piso
-
+            case 10:
+                DeshabilitarPiso();
                 break;
-            case 13:
+            case 11:
                 int newPrecio;
                 newPrecio = lector.nextInt();
                 CambiarPrecioBaseSimple(newPrecio);
                 break;
-            case 14:
+            case 12:
                 int newPrecio1;
                 newPrecio1 = lector.nextInt();
                 CambiarPrecioBaseDoble(newPrecio1);
                 break;
-            case 15:
+            case 13:
+                break;
         }
     }
-}
-
 }
