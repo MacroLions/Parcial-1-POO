@@ -17,31 +17,7 @@ public class Administrador {
    private ArrayList<Piso> pisos = new ArrayList();     
    private ArrayList<Reserva> reservas = new ArrayList(); 
    private ArrayList<Huesped> huespedes = new ArrayList();     
-   
-   //MENU
-   public void menuPrincipal(){
-       System.out.println("** MENU PRINCIPAL **");
-       int opcion = 0;
-       switch(opcion){
-           case 1:
-               System.out.println("** MENU RESERVACION **");
-               System.out.println("1. Agregar Reservacion ");
-               System.out.println("2. Eliminar reservacion ");
-               System.out.println("3. Ver reservacion ");
-               System.out.println("4. Modificar reservacion");
-               System.out.println("5. Verificar Reserva");
-               break;
-           case 2:
-               System.out.println("** ADMINISTRADOR **");
-               System.out.println("1. Agregar Piso ");
-               System.out.println("2. Eliminar Piso ");
-               System.out.println("3. Agregar huesped");
-
-               break;
-}    
-
-   }
-   
+     
    
    public Huesped CreacionHuesped(){
        Scanner lector = new Scanner(System.in);
@@ -52,9 +28,21 @@ public class Administrador {
        Huesped newHuesped = new Huesped(nombre,numeroDui,numeroTarjetaCredito);
        
        //Se agrega a la lista de huespedes.
-       //this.huespedes.add(newHuesped);
-       //Este this podría ir en el menú, pero lo dejaré aquí para mientras.
        
+       //verifica que no tenga mas de 2 reservaciones
+       this.huespedes.add(newHuesped);
+       int cont = 0;
+       for(int i = 0; i < huespedes.size(); i++){
+           if(cont== 0 || cont == 1){
+               if (huespedes.contains(newHuesped)){
+               cont++;
+           }
+           }else{
+               System.out.println("No es posible realizar reservación");
+               System.out.println("Huesped alcanzó el máximo número de reservas");
+           }
+       }    
+       //Este this podría ir en el menú, pero lo dejaré aquí para mientras
        //Return por si se usa luego???? Si no, se cambiaria el tipo de funcion a void.
        return newHuesped;
        
@@ -75,9 +63,9 @@ public class Administrador {
       //agrega reserva a su correspondiente Array
       reservas.add(newReserva);
       
-      //imprime todo lo que hay en el array
+      /*//imprime todo lo que hay en el array
       for ( int i = 0; i < reservas.size(); i++ )
-          System.out.println(reservas.get(i));
+          System.out.println(reservas.get(i));*/
    }
    
    public boolean ComprobarPisoReserva(Reserva reserva){
@@ -94,11 +82,13 @@ public class Administrador {
            return false;
        }
    }
-   
+   //DIANA: TERMINA ESTO
    public void VerReserva(){
        System.out.println("Ingrese numero de reserva: ");
+       Scanner lee = new Scanner(System.in);
+       int numReserva = lee.nextInt();
        
-       for (int numReserva = 0; numReserva < reservas.size(); numReserva++)
+       for(numReserva = 0; numReserva < reservas.size(); numReserva++)
            System.out.println("Reserva es: ");
        
    }
@@ -163,6 +153,35 @@ public class Administrador {
            }
        }
    }
-       
+   public void Menu(){
+       System.out.println("** MENU PRINCIPAL **");
+        
+        System.out.println("** 1. MENU RESERVACION || 2. MENU ADMINISTRACION ** ");
+        
+        Scanner lector = new Scanner(System.in);
+        int opcion = 0;
+        opcion = lector.nextInt();
+        
+        //aun falta que se agregen los metodos dentro de cada uno
+        switch (opcion) {
+            case 1:
+                System.out.println("** MENU RESERVACION **");
+                System.out.println("1. Agregar Reservacion ");
+                this.CreacionHuesped();
+                
+                System.out.println("2. Eliminar reservacion ");
+                System.out.println("3. Ver reservacion ");
+                System.out.println("4. Modificar reservacion");
+                System.out.println("5. Verificar Reserva");
+                break;
+            case 2:
+                System.out.println("** MENU ADMINISTRADOR **");
+                System.out.println("1. Agregar Piso ");
+                System.out.println("2. Eliminar Piso ");
+                System.out.println("3. Agregar huesped");
+
+                break;
+        }
+   }
    
    }
