@@ -484,7 +484,7 @@ public class Administrador {
         System.out.println("** 1. MENU RESERVACION || 2. MENU CONFIGURACION ** ");
 
         Scanner lector = new Scanner(System.in);
-        
+
         int opcion = 0;
         opcion = lector.nextInt();
         switch (opcion) {
@@ -495,27 +495,6 @@ public class Administrador {
                 MenuConfiguracion();
                 break;
 
-        }
-
-        //aun falta que se agregen los metodos dentro de cada uno
-        switch (opcion) {
-            case 1:
-                System.out.println("** MENU RESERVACION **");
-                System.out.println("1. Agregar Reservacion ");
-                this.CreacionHuesped();
-
-                System.out.println("2. Eliminar reservacion ");
-                System.out.println("3. Ver reservacion ");
-                System.out.println("4. Modificar reservacion");
-                System.out.println("5. Verificar Reserva");
-                break;
-            case 2:
-                System.out.println("** MENU ADMINISTRADOR **");
-                System.out.println("1. Agregar Piso ");
-                System.out.println("2. Eliminar Piso ");
-                System.out.println("3. Agregar huesped");
-
-                break;
         }
     }
 }
