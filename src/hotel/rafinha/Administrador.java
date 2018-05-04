@@ -59,7 +59,7 @@ public class Administrador {
       //Dias a reservar, es facil porque solo es un int.   
       
       //Verifica que no tenga 7 o mas dias reservados
-      if (dias >= 7){
+      if (dias > 7){
           System.out.println("Máximo de días reservados. No es posible reservar más de 7 días");
       }
         
@@ -326,7 +326,42 @@ public class Administrador {
           }
           
       }
+      
+      public void HabilitarPiso(){
+          Scanner input= new Scanner(System.in);
+          System.out.println("Pisos existentes: ");
+          for(Piso a:this.pisos){
+              System.out.println("Piso: " + a.getIdentificador());
+          }
+          System.out.print("Piso a bloquear: ");
+          char piso = input.next().charAt(0);
+          for(Piso a:this.pisos){
+              if(a.getIdentificador()==piso){
+                  for(Habitacion b: a.getHabitaciones()){
+                      b.setDisponibilidad(true);
+                  }
+              }
+          }
           
+      }
+      
+      public void DeshabilitarPiso(){
+          Scanner input= new Scanner(System.in);
+          System.out.println("Pisos existentes: ");
+          for(Piso a:this.pisos){
+              System.out.println("Piso: " + a.getIdentificador());
+          }
+          System.out.print("Piso a bloquear: ");
+          char piso = input.next().charAt(0);
+          for(Piso a:this.pisos){
+              if(a.getIdentificador()==piso){
+                  for(Habitacion b: a.getHabitaciones()){
+                      b.setDisponibilidad(false);
+                  }
+              }
+          }          
+      }
+                    
       public void ModificarReserva(){
       }
       
