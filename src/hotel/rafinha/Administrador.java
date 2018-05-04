@@ -211,21 +211,27 @@ public class Administrador {
            case 1://Also probablemente no este bien hecho lo que va dentro de los cases.
                Paquete packBasico = new Paquete();
                System.out.print("Ingrese el nombre del paquete: ");
-               packBasico.getNombre();System.out.println("\n");
+               String nombre = scan.nextLine();
+               packBasico.setNombre(nombre);System.out.println("\n");
                System.out.println("Descripcion del paquete:");
-               packBasico.getSummary();
+               String summary = scan.nextLine();
+               packBasico.setSummary(summary);
                System.out.println("Precio del paquete: ");
-               packBasico.getPrecioExtra();
+               double precio = scan.nextDouble();
+               packBasico.setPrecioExtra(precio);
                //Agregar un Paquete.add(packBasico), hay que hacer un Array para los packs?
                break;
            case 2:
                Paquete packPremium = new Paquete();
                System.out.print("Ingrese el nombre del paquete: ");
-               packPremium.getNombre();System.out.println("\n");
+               String name = scan.nextLine();
+               packPremium.setNombre(name);System.out.println("\n");
                System.out.println("Descripcion del paquete:");
-               packPremium.getSummary();
+               String description = scan.nextLine();
+               packPremium.setSummary(description);
                System.out.println("Precio del paquete: ");
-               packPremium.getPrecioExtra();
+               double price = scan.nextDouble();
+               packPremium.setPrecioExtra(price);
                //Agregar un Paquete.add(packPremium)
                break;
            default:
