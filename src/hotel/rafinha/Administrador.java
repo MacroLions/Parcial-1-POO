@@ -103,14 +103,15 @@ public class Administrador {
        
    }
    
-   public void BorrarPiso(Piso piso){
-       //Si quieren hagan este en base al de agregar piso >:3c
-       if(this.pisos.contains(piso)){
-           int borrador = this.pisos.indexOf(piso);
-           this.pisos.remove(borrador);
-       }
-       else{
-           System.out.println("El piso no existe.");
+   public void BorrarPiso(char identificador){
+       int contador=0;
+       
+       while(contador<=this.pisos.size()){
+           for(Piso a: this.pisos){
+                if(a.getIdentificador()==identificador){
+                this.pisos.remove(a);
+                }
+           }
        }
        
    }
