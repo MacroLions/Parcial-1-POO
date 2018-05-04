@@ -363,10 +363,19 @@ public class Administrador {
       }
                     
       public void ModificarReserva(){
+          
       }
       
       public void EliminarReserva(){
-          
+          int contador=0;
+          Scanner input = new Scanner(System.in);
+          for(Reserva a:this.reservas){
+              System.out.println("Reserva #"+(contador+1)+" Huesped:"+a.getHuesped()+" Paquete:"+a.getPaquete().getNombre()+" Habitación"+a.getPiso().getIdentificador()+a.getHabitacion().getNumCuarto()+" Cantidad de dias: "+a.getDias());
+          }
+          System.out.print("Número de reserva a eliminar: ");
+          int reserva=input.nextInt();
+          this.reservas.remove(reserva);
+              
       }
    
    public void Menu(){
