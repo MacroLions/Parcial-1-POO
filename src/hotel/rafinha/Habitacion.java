@@ -57,17 +57,4 @@ public class Habitacion {
         this.precioBase = precioBase;
     }
     
-    public void disponibilidad(){
-        if(this.disponibilidad == false){
-            System.out.println("Disponible");
-        }
-        else{
-        System.out.println("No Disponible");
-        }
-    }
-    
-    public void bloquearHabitacion(){
-        
-    }
-    
 }
