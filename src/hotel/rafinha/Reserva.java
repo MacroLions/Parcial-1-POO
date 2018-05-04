@@ -40,10 +40,9 @@ public class Reserva {
             
         }
     }
-    public void calcularPreciototal(){
-        int NumUltimoPiso= 
+    public void calcularPreciototal(boolean comprobador){
         
-        if(this.piso.getIdentificador() == 'A' || this.piso.getIdentificador() == 'B' || this.piso.getIdentificador() == 'C' || this.piso.getIdentificador() == 'D' ){
+        if(comprobador==false){
             this.precioTotal=(this.habitacion.getPrecioBase() + this.paquete.getPrecioExtra())*this.dias;
         }
         else{
