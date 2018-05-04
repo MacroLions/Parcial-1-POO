@@ -273,6 +273,17 @@ public class Administrador {
       public void HabilitarHabitacion(){
           
       }
+      
+      public void DeshabilitarHabitacion(){
+          
+      }
+      
+      public void ModificarReserva(){
+      }
+      
+      public void EliminarReserva(){
+          
+      }
    
    public void Menu(){
        System.out.println("** MENU PRINCIPAL **");
