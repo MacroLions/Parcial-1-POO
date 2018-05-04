@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this lic
 ense hage hotel.rafinha;
 import java.util.ArrayList;
@@ -105,16 +105,20 @@ public class Administrador {
    
    public void BorrarPiso(char identificador){
        int contador=0;
+       boolean pisoExiste = false;
        
        while(contador<=this.pisos.size()){
            for(Piso a: this.pisos){
                 if(a.getIdentificador()==identificador){
-                this.pisos.remove(a);
+                    pisoExiste = true;
+                    this.pisos.remove(a);
+                    System.out.println("Piso Eliminado");
                 }
            }
+       }if(pisoExiste==false){
+           System.out.println("El piso no existe");
        }
-       
-   }
+   }       
    
    public void AgregarPiso(char identificador){
        
@@ -132,6 +136,39 @@ public class Administrador {
        if(pisoExiste==false){
            Piso pisoNuevo =new Piso(identificador);
        }
+   }
+   
+      public void AgregarHabitacion(char identificador){
+       int contador = 0;
+       boolean pisoExiste = false;
+       
+       while(contador <= this.pisos.size()){
+           for(Piso a: this.pisos){
+               if(a.getIdentificador() == identificador){
+                   pisoExiste = true;
+                   for(Habitacion b: a.getHabitaciones()){
+                       if(a.habitaciones == null){
+                           Habitacion newhab = new(Habitacion);
+                           newhab.setNumCuarto(1);
+                           newhab.setPiso(a);
+                           a.habitaciones.add(contador, newhab);
+                           break;
+                       }else{
+                           Habitacion newhab = new(Habitacion);
+                           newhab.setNumCuarto();//No se que como ponerle para que tome el numero despues del ultimo.
+                           newhab.setPiso(a);
+                           a.habitaciones.add(contador, newhab);
+                           break;
+                       }
+                   }
+               }
+               
+           }if(pisoExiste == false){
+               System.out.println("El piso no Existe");
+           }
+           
+       }       
+       
    }
    
    public void CambiarPrecioBaseSimple(int newPrecio){
