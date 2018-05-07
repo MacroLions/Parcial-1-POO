@@ -18,6 +18,7 @@ public class HotelRafinha {
      */
     public static void main(String[] args) {
         Scanner dato = new Scanner(System.in);
+
         System.out.println("SISTEMA DE ADMINISTRACION DEL HOTEL 'VIÑA RAFINHA'");
         System.out.println("Ingrese sus credenciales por favor");
         System.out.print("Usuario: ");
@@ -39,9 +40,56 @@ public class HotelRafinha {
 
         //OBJETO ADMINISTRADOR
         Administrador admin = new Administrador();
+
+        Paquete Basico = new Paquete("Basico", "Cosas basicas", 10);
+        Paquete Premium = new Paquete("Premium", "Cosas premium", 150);
+        admin.paquetes.add(Premium);
+        admin.paquetes.add(Basico);
+
+        Piso A = new Piso('A');
+        int a = 1;
+        while (a <= 10) {
+            Habitacion habitacion = new Habitacion(a, A);
+            A.habitaciones.add(habitacion);
+            a++;
+        }
+        Piso B = new Piso('B');
+        int b = 1;
+        while (b <= 10) {
+            Habitacion habitacion = new Habitacion(b, B);
+            B.habitaciones.add(habitacion);
+            b++;
+        }
+        Piso C = new Piso('C');
+        int c = 1;
+        while (c <= 10) {
+            Habitacion habitacion = new Habitacion(c, C);
+            C.habitaciones.add(habitacion);
+            c++;
+        }
+        Piso D = new Piso('D');
+        int d = 1;
+        while (d <= 10) {
+            Habitacion habitacion = new Habitacion(d, D);
+            D.habitaciones.add(habitacion);
+            d++;
+        }
+        Piso E = new Piso('E');
+        int e = 1;
+        while (e <= 10) {
+            Habitacion habitacion = new Habitacion(e, E);
+            E.habitaciones.add(habitacion);
+            e++;
+        }
+        Piso F = new Piso('F');
+        int f = 1;
+        while (f <= 10) {
+            Habitacion habitacion = new Habitacion(f, F);
+            F.habitaciones.add(habitacion);
+            f++;
+        }
         
         admin.MenuPrincipal();
-        
     }
-    
+
 }
