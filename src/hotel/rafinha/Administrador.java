@@ -53,50 +53,6 @@ public class Administrador {
 
     }
 
-    public Paquete EscogerPaquete1() {
-        Scanner ScannerPaquete = new Scanner(System.in);
-        System.out.println("Ingrese el nombre del paquete que desea: ");
-        System.out.println("1. PAQUETE BASICO || 2. PAQUETE PREMIUM");
-
-        int SeleccionPaquete = ScannerPaquete.nextInt();
-
-        switch (SeleccionPaquete) {
-            case 1:
-                System.out.println("** PAQUETE BASICO **");
-                System.out.println("DESCRIPCON: \n" + "- Acceso a la piscina\n" + "- Internet Iliminatado");
-                System.out.println("Precio Base: $100.00");
-                break;
-            case 2:
-                System.out.println("** PAQUETE PREMIUM **");
-                System.out.println("DESCRIPCION: \n" + "- Acceso Buffet de desayuno\n" + "- Acceso Iliminatado a la piscina\n"
-                        + "- Servicio a la habitacion\n" + "- Acceso ilimitado al minibar\n" + "- Internet ilimitado");
-                System.out.println("Precio Base: $200.00");
-                break;
-        }
-
-        if (SeleccionPaquete == 1) {
-            String NombrePaquete = "Basico";
-            this.EscogerPaquete().setNombre(NombrePaquete);
-            String descripcion = "";
-            this.EscogerPaquete().setSummary(descripcion);
-            double PrecioBase = 100.00;
-            this.EscogerPaquete().setPrecioExtra(PrecioBase);
-        }else if(SeleccionPaquete == 2){
-            String NombrePaquete = "PREMIUM";
-            this.EscogerPaquete().setNombre(NombrePaquete);
-            String descripcion = "";
-            this.EscogerPaquete().setSummary(descripcion);
-            double PrecioBase = 200.00;
-            this.EscogerPaquete().setPrecioExtra(PrecioBase);
-        }
-
-        String NombrePaquete = this.EscogerPaquete().getNombre();
-        String descripcion = this.EscogerPaquete().getSummary();
-        double PrecioBase = this.EscogerPaquete().getPrecioExtra();
-        
-        Paquete PaqueteEscogido = new Paquete(NombrePaquete, descripcion, PrecioBase);
-        return PaqueteEscogido;//el que retornaria ala funcion crearreserva
-    }
     
     public Paquete EscogerPaquete(){
         Scanner input = new Scanner(System.in);
@@ -108,8 +64,10 @@ public class Administrador {
             }
             else{
                 System.out.println("El paquete no existe.");
+                return null;
             }
         }
+        return null;
         
     }
 
@@ -127,11 +85,12 @@ public class Administrador {
                     }
                     else{
                         System.out.println("La habitacion no existe o no esta disponible.");
+                        return null;
                     }
                 }
             }
         }
-
+        return null;
     }
 
     public Reserva CreacionReserva(Paquete paquete, Habitacion habitacion) {
@@ -315,45 +274,37 @@ public class Administrador {
     }
 //Solo existen dos paquetes. Se deberia entrar a la lista de paquetes.
     public void ModPacks() {
+        
         System.out.println("Elija el paquete a modificar:");
-        System.out.println("1)Paquete Basico");
-        System.out.println("2)Paquete Premium");
+        int contador = 1;
+        
+        for(Paquete a: this.paquetes){
+            System.out.println("Paquete #"+contador+": Nombre: "+a.getNombre()+" Descripcion: "+a.getSummary()+" Precio: "+a.getPrecioExtra());
+            contador++;
+        }
 
         Scanner scan = new Scanner(System.in);
         int opc = scan.nextInt();
+        
+        Paquete packEditar = this.paquetes.get(opc);
+        
+        System.out.print("Ingrese el nombre del paquete: ");
+        String nombre = scan.nextLine();
+        packEditar.setNombre(nombre);
+        System.out.println("");
+        
+        System.out.print("Descripcion del paquete:");
+        String summary = scan.nextLine();
+        packEditar.setSummary(summary);
+        System.out.println("");
+        
+        System.out.println("Precio del paquete: ");
+        double precio = scan.nextDouble();
+        packEditar.setPrecioExtra(precio);
+        
+        //Aqui el paquete remplazara al anterior.
+        this.paquetes.set(opc, packEditar);
 
-        switch (opc) {//poruqe no agarra las nuevas variables?
-            case 1://Also probablemente no este bien hecho lo que va dentro de los cases.
-                Paquete packBasico = new Paquete();
-                System.out.print("Ingrese el nombre del paquete: ");
-                String nombre = scan.nextLine();
-                packBasico.setNombre(nombre);
-                System.out.println("\n");
-                System.out.println("Descripcion del paquete:");
-                String summary = scan.nextLine();
-                packBasico.setSummary(summary);
-                System.out.println("Precio del paquete: ");
-                double precio = scan.nextDouble();
-                packBasico.setPrecioExtra(precio);
-                this.paquetes.add(packBasico);
-                break;
-            case 2:
-                Paquete packPremium = new Paquete();
-                System.out.print("Ingrese el nombre del paquete: ");
-                String name = scan.nextLine();
-                packPremium.setNombre(name);
-                System.out.println("\n");
-                System.out.println("Descripcion del paquete:");
-                String description = scan.nextLine();
-                packPremium.setSummary(description);
-                System.out.println("Precio del paquete: ");
-                double price = scan.nextDouble();
-                packPremium.setPrecioExtra(price);
-                this.paquetes.add(packPremium);
-                break;
-            default:
-                System.out.println("Opcion no valida.");
-        }
     }
 
     public void HabilitarHabitacion() { //ya
@@ -577,7 +528,7 @@ public class Administrador {
                 EliminarReserva();
                 break;
             case 2:
-                //VerReserva();
+                ModificarReserva();
                 break;
             case 3:
                 //VER RESERVA
