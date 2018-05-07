@@ -17,6 +17,11 @@ public class Habitacion {
     
     public Habitacion(){
     }
+    
+    public Habitacion(int numCuarto, Piso piso){
+        this.numCuarto= numCuarto;
+        this.piso = piso;
+    }
 
     public Habitacion(int numCuarto, boolean disponibilidad, Piso piso, double precioBase) {
         this.numCuarto = numCuarto;
