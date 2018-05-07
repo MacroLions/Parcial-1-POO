@@ -24,8 +24,11 @@ public class Administrador {
 
     public Huesped CreacionHuesped() {
         Scanner lector = new Scanner(System.in);
+        System.out.println("Ingrese el nombre del usuario");
         String nombre = lector.nextLine();
+        System.out.println("Ingrese numero de DUI");
         String numeroDui = lector.nextLine();
+        System.out.println("Ingrese numero de tarjeta de credito");
         String numeroTarjetaCredito = lector.nextLine();
 
         Huesped newHuesped = new Huesped(nombre, numeroDui, numeroTarjetaCredito);
@@ -40,38 +43,119 @@ public class Administrador {
                     cont++;
                 }
             } else {
-                System.out.println("No es posible realizar reservación");
-                System.out.println("Huesped alcanzó el máximo número de reservas");
+                System.out.println("No es posible realizar reservaciÃƒÂ³n");
+                System.out.println("Huesped alcanzÃƒÂ³ el mÃƒÂ¡ximo nÃƒÂºmero de reservas");
             }
         }
-        //Este this podría ir en el menú, pero lo dejaré aquí para mientras
+        //Este this podrÃƒÂ­a ir en el menÃƒÂº, pero lo dejarÃƒÂ© aquÃƒÂ­ para mientras
         //Return por si se usa luego???? Si no, se cambiaria el tipo de funcion a void.
         return newHuesped;
 
     }
 
-    public void CreacionReserva(Paquete paquete, Habitacion habitacion) {
-        Huesped newHuesped = CreacionHuesped();
-        //Aquí se creo el huesped con la funcion anterior.
+    public Paquete EscogerPaquete1() {
+        Scanner ScannerPaquete = new Scanner(System.in);
+        System.out.println("Ingrese el nombre del paquete que desea: ");
+        System.out.println("1. PAQUETE BASICO || 2. PAQUETE PREMIUM");
 
+        int SeleccionPaquete = ScannerPaquete.nextInt();
+
+        switch (SeleccionPaquete) {
+            case 1:
+                System.out.println("** PAQUETE BASICO **");
+                System.out.println("DESCRIPCON: \n" + "- Acceso a la piscina\n" + "- Internet Iliminatado");
+                System.out.println("Precio Base: $100.00");
+                break;
+            case 2:
+                System.out.println("** PAQUETE PREMIUM **");
+                System.out.println("DESCRIPCION: \n" + "- Acceso Buffet de desayuno\n" + "- Acceso Iliminatado a la piscina\n"
+                        + "- Servicio a la habitacion\n" + "- Acceso ilimitado al minibar\n" + "- Internet ilimitado");
+                System.out.println("Precio Base: $200.00");
+                break;
+        }
+
+        if (SeleccionPaquete == 1) {
+            String NombrePaquete = "Basico";
+            this.EscogerPaquete().setNombre(NombrePaquete);
+            String descripcion = "";
+            this.EscogerPaquete().setSummary(descripcion);
+            double PrecioBase = 100.00;
+            this.EscogerPaquete().setPrecioExtra(PrecioBase);
+        }else if(SeleccionPaquete == 2){
+            String NombrePaquete = "PREMIUM";
+            this.EscogerPaquete().setNombre(NombrePaquete);
+            String descripcion = "";
+            this.EscogerPaquete().setSummary(descripcion);
+            double PrecioBase = 200.00;
+            this.EscogerPaquete().setPrecioExtra(PrecioBase);
+        }
+
+        String NombrePaquete = this.EscogerPaquete().getNombre();
+        String descripcion = this.EscogerPaquete().getSummary();
+        double PrecioBase = this.EscogerPaquete().getPrecioExtra();
+        
+        Paquete PaqueteEscogido = new Paquete(NombrePaquete, descripcion, PrecioBase);
+        return PaqueteEscogido;//el que retornaria ala funcion crearreserva
+    }
+    
+    public Paquete EscogerPaquete(){
+        Scanner input = new Scanner(System.in);
+        System.out.print("Nombre del paquete a escoger: ");
+        String NombrePaquete = input.nextLine();
+        for(Paquete a:this.paquetes){
+            if(a.getNombre()== NombrePaquete){
+                return a;
+            }
+            else{
+                System.out.println("El paquete no existe.");
+            }
+        }
+        
+    }
+
+    public Habitacion EscogerHabitacion() {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Identificador de piso: ");
+        char pisoHabitacion = input.nextLine().charAt(0);
+        System.out.print("Ingrese el numero de la habitacion: ");
+        int numHabitacion = input.nextInt();
+        for(Piso a:this.pisos){
+            if(a.getIdentificador()==pisoHabitacion){
+                for(Habitacion b: a.getHabitaciones()){
+                    if(b.getNumCuarto()==numHabitacion && b.isDisponibilidad()){
+                        return b;
+                    }
+                    else{
+                        System.out.println("La habitacion no existe o no esta disponible.");
+                    }
+                }
+            }
+        }
+
+    }
+
+    public Reserva CreacionReserva(Paquete paquete, Habitacion habitacion) {
+        System.out.println("entramos a funcion crear reserva");///HASTA AQUI SI SE EJECUTA
+        Huesped newHuesped = CreacionHuesped(); // Modificar SOUTS DE CREACION HUESPED
+        //AquÃƒÂ­ se creo el huesped con la funcion anterior.
+        System.out.println("entramos a funcion crear reserva");
         Scanner lector = new Scanner(System.in);
         int dias = lector.nextInt();
         //Dias a reservar, es facil porque solo es un int.   
 
         //Verifica que no tenga 7 o mas dias reservados
         if (dias > 7) {
-            System.out.println("Máximo de días reservados. No es posible reservar más de 7 días");
+            System.out.println("MÃƒÂ¡ximo de dÃƒÂ­as reservados. No es posible reservar mÃƒÂ¡s de 7 dÃƒÂ­as");
         }
+        //String Escogio = paquete;
 
-        //Ahora el problema es con paquete y habitación. Que no estoy segura si sería una funcion a lo "Escoger paquete" y que se revise la lista. al igual que habitacion.
+        //Ahora el problema es con paquete y habitaciÃƒÂ³n. Que no estoy segura si serÃƒÂ­a una funcion a lo "Escoger paquete" y que se revise la lista. al igual que habitacion.
         Reserva newReserva = new Reserva(newHuesped, paquete, habitacion, dias);
         newReserva.calcularPreciototal(ComprobarPisoReserva(newReserva));
         //agrega reserva a su correspondiente Array
         reservas.add(newReserva);
 
-        /*//imprime todo lo que hay en el array
-      for ( int i = 0; i < reservas.size(); i++ )
-          System.out.println(reservas.get(i));*/
+        return newReserva;
     }
 
     public boolean ComprobarPisoReserva(Reserva reserva) {
@@ -86,17 +170,15 @@ public class Administrador {
             return false;
         }
     }
-    //DIANA: TERMINA ESTO
-
+    
+    //Revisar luego. O hacer uno para ver TODAS LAS RESERVAS.
     public void VerReserva() {
-        System.out.println("Ingrese numero de reserva: ");
-        Scanner lee = new Scanner(System.in);
-        int numReserva = lee.nextInt();
+        //imprime todo lo que hay en el array      
 
-        for (numReserva = 0; numReserva < reservas.size(); numReserva++) {
-            System.out.println("Reserva es: ");
+        for (int i = 0; i < this.reservas.size(); i++) {
+            System.out.println("Reserva: ");
+            System.out.println(this.reservas.get(i));
         }
-
     }
 
     public void BorrarPiso(char identificador) {//ya
@@ -153,7 +235,7 @@ public class Administrador {
                         } else {
                             Habitacion newhab = new Habitacion();
 
-                            //Aquí tomara el numero del tamaño de la lista.
+                            //AquÃƒÂ­ tomara el numero del tamaÃƒÂ±o de la lista.
                             int numb = a.getHabitaciones().size();
                             newhab.setNumCuarto(numb + 1);
                             newhab.setPiso(a);
@@ -231,7 +313,7 @@ public class Administrador {
             }
         }
     }
-
+//Solo existen dos paquetes. Se deberia entrar a la lista de paquetes.
     public void ModPacks() {
         System.out.println("Elija el paquete a modificar:");
         System.out.println("1)Paquete Basico");
@@ -284,7 +366,7 @@ public class Administrador {
                 System.out.println("Numero de habitacion: " + b.getNumCuarto() + " Piso de habitacion: " + b.getPiso() + " Disponibilidad: " + b.isDisponibilidad());
             }
         }
-        System.out.print("Piso donde se encuentra habitación: ");
+        System.out.print("Piso donde se encuentra habitaciÃƒÂ³n: ");
         piso = input.next().charAt(0);
         System.out.print("Numero de habitacion: ");
         habitacion = input.nextInt();
@@ -312,7 +394,7 @@ public class Administrador {
                 System.out.println("Numero de habitacion: " + b.getNumCuarto() + " Piso de habitacion: " + b.getPiso() + " Disponibilidad: " + b.isDisponibilidad());
             }
         }
-        System.out.print("Piso donde se encuentra habitación: ");
+        System.out.print("Piso donde se encuentra habitaciÃƒÂ³n: ");
         piso = input.next().charAt(0);
         System.out.print("Numero de habitacion: ");
         habitacion = input.nextInt();
@@ -366,6 +448,11 @@ public class Administrador {
     }
 
     public void ModificarReserva() {
+        for(Reserva a:this.reservas){
+            String Nombre = a.getHuesped().getNombre();
+            char piso= a.getPiso().getIdentificador();
+            
+        }
 
     }
 
@@ -373,9 +460,9 @@ public class Administrador {
         int contador = 0;
         Scanner input = new Scanner(System.in);
         for (Reserva a : this.reservas) {
-            System.out.println("Reserva #" + (contador + 1) + " Huesped:" + a.getHuesped() + " Paquete:" + a.getPaquete().getNombre() + " Habitación" + a.getPiso().getIdentificador() + a.getHabitacion().getNumCuarto() + " Cantidad de dias: " + a.getDias());
+            System.out.println("Reserva #" + (contador + 1) + " Huesped:" + a.getHuesped() + " Paquete:" + a.getPaquete().getNombre() + " HabitaciÃƒÂ³n" + a.getPiso().getIdentificador() + a.getHabitacion().getNumCuarto() + " Cantidad de dias: " + a.getDias());
         }
-        System.out.print("Número de reserva a eliminar: ");
+        System.out.print("NÃƒÂºmero de reserva a eliminar: ");
         int reserva = input.nextInt();
         this.reservas.remove(reserva);
 
@@ -408,7 +495,7 @@ public class Administrador {
                 EliminarReserva();
                 break;
             case 2:
-                VerReserva();
+                //VerReserva();
                 break;
             case 3:
                 //VER RESERVA
@@ -467,8 +554,8 @@ public class Administrador {
         eleccion = lector.nextInt();
         switch (eleccion) {
             case 1:
-                Paquete paquete;
-                Habitacion habitacion;
+                Paquete paquete = EscogerPaquete();
+                Habitacion habitacion = EscogerHabitacion();
                 CreacionReserva(paquete, habitacion);
                 break;
             case 2:
