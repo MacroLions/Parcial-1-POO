@@ -286,7 +286,7 @@ public class Administrador {
         Scanner scan = new Scanner(System.in);
         int opc = scan.nextInt();
         
-        Paquete packEditar = this.paquetes.get(opc);
+        Paquete packEditar = this.paquetes.get(opc-1);
         
         System.out.print("Ingrese el nombre del paquete: ");
         String nombre = scan.nextLine();
@@ -303,7 +303,7 @@ public class Administrador {
         packEditar.setPrecioExtra(precio);
         
         //Aqui el paquete remplazara al anterior.
-        this.paquetes.set(opc, packEditar);
+        this.paquetes.set(opc-1, packEditar);
 
     }
 
@@ -429,7 +429,7 @@ public class Administrador {
                 for(Huesped a:this.huespedes){
                     if(a.getNombre()==NuevoNombre){
                         ReservaAModificar.setHuesped(a);
-                        this.reservas.set(NumeroReservaAModificar, ReservaAModificar);
+                        this.reservas.set(NumeroReservaAModificar-1, ReservaAModificar);
                         break;
                     }
                     else{
@@ -448,7 +448,7 @@ public class Administrador {
                         for(Habitacion b:a.getHabitaciones()){
                             if(b.getNumCuarto()==NuevoNumeroDeHabitacion && b.isDisponibilidad()){
                                 ReservaAModificar.setHabitacion(b);
-                                this.reservas.set(NumeroReservaAModificar, ReservaAModificar);
+                                this.reservas.set(NumeroReservaAModificar-1, ReservaAModificar);
                                 break;
                             }
                             else{
@@ -465,7 +465,7 @@ public class Administrador {
                 for(Paquete a:this.paquetes){
                     if(a.getNombre()==NuevoNombrePaquete){
                         ReservaAModificar.setPaquete(a);
-                        this.reservas.set(NumeroReservaAModificar, ReservaAModificar);
+                        this.reservas.set(NumeroReservaAModificar-1, ReservaAModificar);
                         break;
                     }
                     else{
@@ -478,7 +478,7 @@ public class Administrador {
                 int NuevosDias= input.nextInt();
                 if(NuevosDias <=7){
                     ReservaAModificar.setDias(NuevosDias);
-                    this.reservas.set(NumeroReservaAModificar, ReservaAModificar);
+                    this.reservas.set(NumeroReservaAModificar-1, ReservaAModificar);
                     break;
                 }
                 else{
