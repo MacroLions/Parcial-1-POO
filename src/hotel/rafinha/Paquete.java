@@ -10,11 +10,12 @@ package hotel.rafinha;
  * @author ricky
  */
 public class Paquete {
+
     private String nombre;
     private String summary;
     private double precioExtra;
-    
-    public Paquete(){
+
+    public Paquete() {
     }
 
     public Paquete(String nombrePaquete, String summary, double precioExtra) {
@@ -46,6 +47,5 @@ public class Paquete {
     public void setPrecioExtra(double precioExtra) {
         this.precioExtra = precioExtra;
     }
-    
-    
+
 }
