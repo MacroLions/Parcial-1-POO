@@ -17,18 +17,18 @@ import java.util.Scanner;
  */
 public class Administrador {
 
-    private ArrayList<Piso> pisos = new ArrayList();
-    private ArrayList<Reserva> reservas = new ArrayList();
-    private ArrayList<Huesped> huespedes = new ArrayList();
-    private ArrayList<Paquete> paquetes = new ArrayList();
+    public ArrayList<Piso> pisos = new ArrayList();
+    public ArrayList<Reserva> reservas = new ArrayList();
+    public ArrayList<Huesped> huespedes = new ArrayList();
+    public ArrayList<Paquete> paquetes = new ArrayList();
 
     public Huesped CreacionHuesped() {
         Scanner lector = new Scanner(System.in);
-        System.out.println("Ingrese el nombre del usuario");
+        System.out.print("Ingrese el nombre del cliente ");
         String nombre = lector.nextLine();
-        System.out.println("Ingrese numero de DUI");
+        System.out.print("Ingrese numero de DUI ");
         String numeroDui = lector.nextLine();
-        System.out.println("Ingrese numero de tarjeta de credito");
+        System.out.print("Ingrese numero de tarjeta de credito ");
         String numeroTarjetaCredito = lector.nextLine();
 
         Huesped newHuesped = new Huesped(nombre, numeroDui, numeroTarjetaCredito);
@@ -94,10 +94,9 @@ public class Administrador {
     }
 
     public Reserva CreacionReserva(Paquete paquete, Habitacion habitacion) {
-        System.out.println("entramos a funcion crear reserva");///HASTA AQUI SI SE EJECUTA
         Huesped newHuesped = CreacionHuesped(); // Modificar SOUTS DE CREACION HUESPED
         //AquÃƒÂ­ se creo el huesped con la funcion anterior.
-        System.out.println("entramos a funcion crear reserva");
+        System.out.println("Dias a reservar: ");
         Scanner lector = new Scanner(System.in);
         int dias = lector.nextInt();
         //Dias a reservar, es facil porque solo es un int.   
@@ -617,4 +616,6 @@ public class Administrador {
 
         }
     }
+    
+    
 }
