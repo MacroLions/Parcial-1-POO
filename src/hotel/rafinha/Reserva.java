@@ -18,6 +18,7 @@ public class Reserva {
     private double precioTotal;
     private Huesped huesped;
     private int dias;
+    private String TipoPaquete;
     
     Reserva(Huesped huesped, Paquete paquete, Habitacion habitacion, int dias){
         this.huesped=huesped;
@@ -96,6 +97,14 @@ public class Reserva {
 
     public void setDias(int dias) {
         this.dias = dias;
+    }
+
+    public String getTipoPaquete() {
+        return TipoPaquete;
+    }
+
+    public void setTipoPaquete(String TipoPaquete) {
+        this.TipoPaquete = TipoPaquete;
     }
     
     
