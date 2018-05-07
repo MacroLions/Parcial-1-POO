@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Piso {
     private char identificador;
     private boolean disponibilidad;
-    private ArrayList<Habitacion> habitaciones = new ArrayList();
+    public ArrayList<Habitacion> habitaciones = new ArrayList();
     
     public Piso(char identificador){
         this.identificador=identificador;
