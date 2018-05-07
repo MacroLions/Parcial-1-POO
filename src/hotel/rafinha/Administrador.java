@@ -448,10 +448,92 @@ public class Administrador {
     }
 
     public void ModificarReserva() {
+        int contador =1;
+        Scanner input = new Scanner(System.in);
         for(Reserva a:this.reservas){
             String Nombre = a.getHuesped().getNombre();
-            char piso= a.getPiso().getIdentificador();
-            
+            char pisoHabitacion= a.getPiso().getIdentificador();
+            int numeroHabitacion = a.getHabitacion().getNumCuarto();
+            String paqueteHabitacion=a.getPaquete().getNombre();
+            int diasPaquete = a.getDias();
+            System.out.println("Reserva #"+contador+": Nombre: "+Nombre+" Habitacion: "+pisoHabitacion+numeroHabitacion+" Paquete: "+paqueteHabitacion+" Dias reservados: "+diasPaquete);
+        }
+        
+        System.out.print("Reserva a editar: ");
+        int NumeroReservaAModificar = input.nextInt();
+        Reserva ReservaAModificar = this.reservas.get(NumeroReservaAModificar-1);
+                
+        System.out.println("1. Modificar Huesped");
+        System.out.println("2. Modificar Habitacion");
+        System.out.println("3. Modificar Paquete");
+        System.out.println("4. Modificar Dias reservados");
+        System.out.print("Ingrese el numero de opcion que desea modificar: ");
+        int opcion = input.nextInt();
+        
+        switch(opcion){
+            case 1:
+                System.out.print("Nuevo propietario de la reserva: ");
+                String NuevoNombre = input.nextLine();
+                
+                for(Huesped a:this.huespedes){
+                    if(a.getNombre()==NuevoNombre){
+                        ReservaAModificar.setHuesped(a);
+                        this.reservas.set(NumeroReservaAModificar, ReservaAModificar);
+                        break;
+                    }
+                    else{
+                        System.out.println("El huesped no existe.");
+                        break;
+                    }
+                }
+            case 2:
+                System.out.print("Piso donde se encuenttra la nueva habitacion: ");
+                char piso = input.nextLine().charAt(0);
+                System.out.print("Numero de la nueva habitacion: ");
+                int NuevoNumeroDeHabitacion= input.nextInt();
+                
+                for(Piso a:this.pisos){
+                    if(a.getIdentificador()==piso){
+                        for(Habitacion b:a.getHabitaciones()){
+                            if(b.getNumCuarto()==NuevoNumeroDeHabitacion && b.isDisponibilidad()){
+                                ReservaAModificar.setHabitacion(b);
+                                this.reservas.set(NumeroReservaAModificar, ReservaAModificar);
+                                break;
+                            }
+                            else{
+                                System.out.println("La habitacion no esxiste o no se encuentra disponible");
+                                break;
+                            }
+                        }
+                    }
+                }
+            case 3:
+                System.out.print("Nuevo paquete para la reserva: ");
+                String NuevoNombrePaquete = input.nextLine();
+                
+                for(Paquete a:this.paquetes){
+                    if(a.getNombre()==NuevoNombrePaquete){
+                        ReservaAModificar.setPaquete(a);
+                        this.reservas.set(NumeroReservaAModificar, ReservaAModificar);
+                        break;
+                    }
+                    else{
+                        System.out.println("El paquete no existe.");
+                        break;
+                    }
+                }
+            case 4:
+                System.out.print("Nueva cantidad de dias: ");
+                int NuevosDias= input.nextInt();
+                if(NuevosDias <=7){
+                    ReservaAModificar.setDias(NuevosDias);
+                    this.reservas.set(NumeroReservaAModificar, ReservaAModificar);
+                    break;
+                }
+                else{
+                    System.out.println("La cantidad de dias no es valida");
+                    break;
+                }
         }
 
     }
