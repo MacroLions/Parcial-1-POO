@@ -72,16 +72,13 @@ public class Administrador {
     public Paquete EscogerPaquete() {
         Scanner input = new Scanner(System.in);
         System.out.print("Nombre del paquete a escoger: ");
-        String NombrePaquete = input.nextLine();//pide el nombre del paquete que desea
+        String NombrePaquete = input.nextLine().toUpperCase();//pide el nombre del paquete que desea
         for (Paquete a : this.paquetes) {//se recorre el ArrayList "paquete" 
-            if (a.getNombre() == NombrePaquete) { //compara el nombre del paquete que se agregue para saber si existe dentro de la lista
+            if (a.getNombre().equals(NombrePaquete)==true) { //compara el nombre del paquete que se agregue para saber si existe dentro de la lista
                 return a; //retorna el paquete
-            } else {
-                System.out.println("El paquete no existe.");/*si el Striing nombre
-                ingresado no se encuestra es porque no se ha creado o no es uno de los dos ofrecidos por defecto*/
-                return null;
             }
         }
+        System.out.println("El paquete no existe.");
         return null;
 
     }
@@ -122,18 +119,16 @@ public class Administrador {
     public Reserva CreacionReserva(Paquete paquete, Habitacion habitacion) {
         Huesped newHuesped = CreacionHuesped(); // Modificar SOUTS DE CREACION HUESPED
         //AquÃƒÂ­ se creo el huesped con la funcion anterior.
-        System.out.println("Dias a reservar: ");
+        System.out.print("Dias a reservar: ");
         Scanner lector = new Scanner(System.in);
         int dias = lector.nextInt();
-        //Dias a reservar, es facil porque solo es un int.   
-
+        
         //Verifica que no tenga 7 o mas dias reservados
         if (dias > 7) {
-            System.out.println("MÃƒÂ¡ximo de dÃƒÂ­as reservados. No es posible reservar mÃƒÂ¡s de 7 dÃƒÂ­as");
+            System.out.println("Supera el maximo de dias posibles a reservar.");
         }
-        //String Escogio = paquete;
-
         //luego de recoger todos los parametros necesario la reserva se hace efectiva, es creadaa
+        
         Reserva newReserva = new Reserva(newHuesped, paquete, habitacion, dias);
         newReserva.calcularPreciototal(ComprobarPisoReserva(newReserva));
         //agrega reserva a su correspondiente ArrayList
@@ -144,7 +139,7 @@ public class Administrador {
 
     public boolean ComprobarPisoReserva(Reserva reserva) {
         Piso pisoRevisar = reserva.getPiso();//Objeto tipo Piso
-        int UltimoPisoID = this.pisos.size(); //obtiene la cantidad de pisos que están creados
+        int UltimoPisoID = this.pisos.size()-1; //obtiene la cantidad de pisos que están creados
         int PenultimoPisoID = UltimoPisoID - 1; //obtiene el penultimo piso
 
         //verifica si el piso ingresado es el ultimo
@@ -162,9 +157,9 @@ public class Administrador {
     public void VerReserva() {
         //imprime todo lo que hay en el array reservas   
         Scanner input = new Scanner(System.in);
-        int opc = input.nextInt();
 
         System.out.println("1. Ver todas las reservas || 2. Ver reserva especifica");
+        int opc = input.nextInt();
 
         switch (opc) {
             case 1:
@@ -172,16 +167,17 @@ public class Administrador {
 
                 for (Reserva a : this.reservas) {
                     System.out.println("Reservas: ");
-
+                    System.out.println("");
                     System.out.println("Nombre del Huesped: " + a.getHuesped().getNombre());
-                    System.out.println("Paquete" + a.getTipoPaquete());
-                    System.out.println("Piso: " + a.getPiso());
-                    System.out.println("Habitacion: " + a.getHabitacion());
+                    System.out.println("Paquete: " + a.getPaquete().getNombre());
+                    System.out.println("Piso: " + a.getPiso().getIdentificador());
+                    System.out.println("Habitacion: " + a.getHabitacion().getNumCuarto());
                     System.out.println("Dias reservados: " + a.getDias());
                     System.out.println("Precio total: " + a.getPrecioTotal());
+                    System.out.println("");
                 }
-
                 break;
+                
             case 2:
 
                 System.out.println("Ingrese el numero de la reserva: ");
@@ -189,15 +185,15 @@ public class Administrador {
                 int contador = 0;
                 System.out.println("Su reserva: ");
 
-                for (Reserva a: this.reservas) {
+                for (Reserva a : this.reservas) {
                     contador++; //contador ingrementa en uno cada vez que se 
                     if (numReservaAImprimir == contador) {
                         System.out.println("Reserva: ");
 
                         System.out.println("Nombre del Huesped: " + a.getHuesped().getNombre());
-                        System.out.println("Paquete" + a.getTipoPaquete());
-                        System.out.println("Piso: " + a.getPiso());
-                        System.out.println("Habitacion: " + a.getHabitacion());
+                        System.out.println("Paquete" + a.getPaquete().getNombre());
+                        System.out.println("Piso: " + a.getPiso().getIdentificador());
+                        System.out.println("Habitacion: " + a.getHabitacion().getNumCuarto());
                         System.out.println("Dias reservados: " + a.getDias());
                         System.out.println("Precio total: " + a.getPrecioTotal());
                     }
@@ -671,6 +667,8 @@ public class Administrador {
                 Paquete paquete = EscogerPaquete();
                 Habitacion habitacion = EscogerHabitacion();
                 CreacionReserva(paquete, habitacion);
+                System.out.println("Reserva Creada!");
+                System.out.println("");
                 break;
             case 2:
                 VerReserva();
