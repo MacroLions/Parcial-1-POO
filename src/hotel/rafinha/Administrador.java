@@ -74,7 +74,7 @@ public class Administrador {
         System.out.print("Nombre del paquete a escoger: ");
         String NombrePaquete = input.nextLine().toUpperCase();//pide el nombre del paquete que desea
         for (Paquete a : this.paquetes) {//se recorre el ArrayList "paquete" 
-            if (a.getNombre().equals(NombrePaquete)==true) { //compara el nombre del paquete que se agregue para saber si existe dentro de la lista
+            if (a.getNombre().equals(NombrePaquete) == true) { //compara el nombre del paquete que se agregue para saber si existe dentro de la lista
                 return a; //retorna el paquete
             }
         }
@@ -122,13 +122,13 @@ public class Administrador {
         System.out.print("Dias a reservar: ");
         Scanner lector = new Scanner(System.in);
         int dias = lector.nextInt();
-        
+
         //Verifica que no tenga 7 o mas dias reservados
         if (dias > 7) {
             System.out.println("Supera el maximo de dias posibles a reservar.");
         }
         //luego de recoger todos los parametros necesario la reserva se hace efectiva, es creadaa
-        
+
         Reserva newReserva = new Reserva(newHuesped, paquete, habitacion, dias);
         newReserva.calcularPreciototal(ComprobarPisoReserva(newReserva));
         //agrega reserva a su correspondiente ArrayList
@@ -139,7 +139,7 @@ public class Administrador {
 
     public boolean ComprobarPisoReserva(Reserva reserva) {
         Piso pisoRevisar = reserva.getPiso();//Objeto tipo Piso
-        int UltimoPisoID = this.pisos.size()-1; //obtiene la cantidad de pisos que están creados
+        int UltimoPisoID = this.pisos.size() - 1; //obtiene la cantidad de pisos que están creados
         int PenultimoPisoID = UltimoPisoID - 1; //obtiene el penultimo piso
 
         //verifica si el piso ingresado es el ultimo
@@ -177,7 +177,7 @@ public class Administrador {
                     System.out.println("");
                 }
                 break;
-                
+
             case 2:
 
                 System.out.println("Ingrese el numero de la reserva: ");
@@ -225,16 +225,17 @@ public class Administrador {
         int contador = 0;
         boolean pisoExiste = false;
         //mientras el contador sea menos que la cantidad de pisos
-        while (contador <= this.pisos.size()) {
-            for (Piso a : this.pisos) {//se recorren los pisos
-                if (a.getIdentificador() == identificador) { //si el identificador ingresado es igual a uno que está en la lista es porque ese piso ya existe
-                    System.out.println("El piso ya existe.");
-                    pisoExiste = true;
-                }
+        for (Piso a : this.pisos) {//se recorren los pisos
+            if (a.getIdentificador() == identificador) { //si el identificador ingresado es igual a uno que está en la lista es porque ese piso ya existe
+                System.out.println("El piso ya existe.");
+                pisoExiste = true;
+                System.out.println("");
             }
         }
         if (pisoExiste == false) { //si los identificadores no coinciden entonces se agrega el nuevo piso
             Piso pisoNuevo = new Piso(identificador);
+            System.out.println("Piso agregado!");
+            System.out.println("");
         }
     }
 
@@ -563,11 +564,11 @@ public class Administrador {
         int contador = 0;
         Scanner input = new Scanner(System.in);
         for (Reserva a : this.reservas) {//busca la reserva y si la encuentra la imprime
-            System.out.println("Reserva #" + (contador + 1) + " Huesped:" + a.getHuesped() + " Paquete:" + a.getPaquete().getNombre() + " HabitaciÃƒÂ³n" + a.getPiso().getIdentificador() + a.getHabitacion().getNumCuarto() + " Cantidad de dias: " + a.getDias());
+            System.out.println("Reserva #" + (contador + 1) + " Huesped:" + a.getHuesped().getNombre() + " Paquete:" + a.getPaquete().getNombre() + " Habitacion: " + a.getPiso().getIdentificador() + a.getHabitacion().getNumCuarto() + " Cantidad de dias: " + a.getDias());
         }
-        System.out.print("NÃƒÂºmero de reserva a eliminar: ");
+        System.out.print("Numero de reserva a eliminar: ");
         int reserva = input.nextInt();
-        this.reservas.remove(reserva);//elimina la reserva de la lista
+        this.reservas.remove(reserva - 1);//elimina la reserva de la lista
 
     }
 
@@ -582,19 +583,19 @@ public class Administrador {
 //IMPRIME TODAS LAS OPCIONES DIPONIBLES EN EL MENU CONFIGURACION
         System.out.println("** MENU CONFIGURACION **");
         System.out.println("1. Eliminar reservacion ");
-        System.out.println("2. Ver reservacion ");
+        System.out.println("2. Modificar reserva ");
         System.out.println("3. Ver reservaciones ");
         System.out.println("4. Agregar Piso ");
         System.out.println("5. Eliminar Piso ");
-        System.out.println("6.Borrar Habitacion");
+        System.out.println("6. Borrar Habitacion");
         System.out.println("7. Habilitar Habitacion");
         System.out.println("8. Desabilitar Habitacion");
-        System.out.println("9.Habilitar piso");
+        System.out.println("9. Habilitar piso");
         System.out.println("10.Deshabilitar piso");
         System.out.println("11.Cambiar Precio Base Simple");
         System.out.println("12.Cambiar Precio Base Doble");
         System.out.println("13.Salir");
-
+        System.out.print("Opcion: ");
         Scanner input = new Scanner(System.in);
 //SWITCH CON TODAS LAS FUNCIONES NECESARIAS
         int opcion;
@@ -607,11 +608,11 @@ public class Administrador {
                 ModificarReserva();
                 break;
             case 3:
-                //VER RESERVA
+                VerReserva();
                 break;
             case 4:
-                System.out.println("Cual es el identificador del piso que desea agregar: ");
-                char piso = input.next().charAt(0);
+                System.out.print("Cual es el identificador del piso que desea agregar: ");
+                char piso = input.next().toUpperCase().charAt(0);
                 AgregarPiso(piso);
                 break;
             case 5:
