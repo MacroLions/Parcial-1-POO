@@ -72,8 +72,8 @@ public class Administrador {
     public Paquete EscogerPaquete() {
         Scanner input = new Scanner(System.in);
         System.out.print("Paquetes disponibles: ");
-        for(Paquete a: this.paquetes){
-            System.out.print(a.getNombre()+", ");
+        for (Paquete a : this.paquetes) {
+            System.out.print(a.getNombre() + ", ");
         }
         System.out.println("");
         System.out.print("Nombre del paquete a escoger: ");
@@ -97,21 +97,21 @@ public class Administrador {
      */
     public Habitacion EscogerHabitacion() {
         Scanner input = new Scanner(System.in);
-        
+
         System.out.println("Pisos disponibles: ");
-        for(Piso a: this.pisos){
-            System.out.print(a.getIdentificador()+", ");
+        for (Piso a : this.pisos) {
+            System.out.print(a.getIdentificador() + ", ");
         }
-        
+
         System.out.println("");
         System.out.print("Identificador de piso a escoger: ");
         char pisoHabitacion = input.nextLine().toUpperCase().charAt(0);
         System.out.println("");
-        System.out.println("Habitaciones diponibles en piso "+pisoHabitacion+": ");
-        for(Piso a: this.pisos){
-            if(a.getIdentificador()==pisoHabitacion){
-                for(Habitacion b: a.getHabitaciones()){
-                    System.out.print("Habitacion #"+b.getNumCuarto()+", ");
+        System.out.println("Habitaciones diponibles en piso " + pisoHabitacion + ": ");
+        for (Piso a : this.pisos) {
+            if (a.getIdentificador() == pisoHabitacion) {
+                for (Habitacion b : a.getHabitaciones()) {
+                    System.out.print("Habitacion #" + b.getNumCuarto() + ", ");
                 }
             }
         }
@@ -317,7 +317,7 @@ public class Administrador {
                     if (b.getNumCuarto() == numHabitacion) {
                         habExiste = true;
                         a.getHabitaciones().remove(b);//si existe entonces elimina la habitación de lista
-                        System.out.println("La habitacion #"+b.getNumCuarto()+" del piso: "+a.getIdentificador()+" ha sido eliminada.");
+                        System.out.println("La habitacion #" + b.getNumCuarto() + " del piso: " + a.getIdentificador() + " ha sido eliminada.");
                         System.out.println("");
                         break;
                     }
@@ -350,6 +350,7 @@ public class Administrador {
                 }
             }
         }
+        System.out.println("Precio base de habitaciones simples cambiado");
     }
 
     /*clasifica las habitaciones por PARES E IMPARES
@@ -367,6 +368,7 @@ public class Administrador {
                 }
             }
         }
+        System.out.println("Precio base de habitaciones doble cambiado");
     }
 //Solo existen dos paquetes. Se deberia entrar a la lista de paquetes.
 
@@ -409,19 +411,19 @@ public class Administrador {
         int habitacion = 0;
         char piso;
         Scanner input = new Scanner(System.in);
-        
+
         System.out.println("Pisos existentes: ");
         for (Piso a : this.pisos) {
-                System.out.println("Piso: " + a.getIdentificador());
+            System.out.println("Piso: " + a.getIdentificador());
         }
         System.out.print("Piso donde se encuentra habitacion: ");
         piso = input.next().toUpperCase().charAt(0);
-        
-        System.out.println("Habitaciones en el piso "+piso+": ");
-        for(Piso b: this.pisos ){
-            if(b.getIdentificador()==piso){
-                for(Habitacion c : b.getHabitaciones()){
-                    System.out.println("Habitacion #"+c.getNumCuarto()+" Disponibilidad:"+c.isDisponibilidad());
+
+        System.out.println("Habitaciones en el piso " + piso + ": ");
+        for (Piso b : this.pisos) {
+            if (b.getIdentificador() == piso) {
+                for (Habitacion c : b.getHabitaciones()) {
+                    System.out.println("Habitacion #" + c.getNumCuarto() + " Disponibilidad:" + c.isDisponibilidad());
                 }
             }
         }
@@ -433,7 +435,7 @@ public class Administrador {
                 for (Habitacion b : a.getHabitaciones()) {//se recorren sus habitaciones
                     if (b.getNumCuarto() == habitacion) {//si el numero de cuarto ingresado con un habitacion existemte
                         b.setDisponibilidad(true);//entonces la habitacion está disponible
-                        System.out.println("Habitacion: "+b.getNumCuarto()+" En el piso: "+a.getIdentificador()+" habilitada!");
+                        System.out.println("Habitacion: " + b.getNumCuarto() + " En el piso: " + a.getIdentificador() + " habilitada!");
                         System.out.println("");
                     }
                 }
@@ -447,19 +449,19 @@ public class Administrador {
         int habitacion = 0;
         char piso;
         Scanner input = new Scanner(System.in);
-        
+
         System.out.println("Pisos existentes: ");
         for (Piso a : this.pisos) {
-                System.out.println("Piso: " + a.getIdentificador());
+            System.out.println("Piso: " + a.getIdentificador());
         }
         System.out.print("Piso donde se encuentra habitacion: ");
         piso = input.next().toUpperCase().charAt(0);
-        
-        System.out.println("Habitaciones en el piso "+piso+": ");
-        for(Piso b: this.pisos ){
-            if(b.getIdentificador()==piso){
-                for(Habitacion c : b.getHabitaciones()){
-                    System.out.println("Habitacion #"+c.getNumCuarto()+" Disponibilidad:"+c.isDisponibilidad());
+
+        System.out.println("Habitaciones en el piso " + piso + ": ");
+        for (Piso b : this.pisos) {
+            if (b.getIdentificador() == piso) {
+                for (Habitacion c : b.getHabitaciones()) {
+                    System.out.println("Habitacion #" + c.getNumCuarto() + " Disponibilidad:" + c.isDisponibilidad());
                 }
             }
         }
@@ -471,7 +473,7 @@ public class Administrador {
                 for (Habitacion b : a.getHabitaciones()) {//se recorren sus habitaciones
                     if (b.getNumCuarto() == habitacion) {//si el numero de cuarto ingresado con un habitacion existemte
                         b.setDisponibilidad(false);//entonces la habitacion está disponible
-                        System.out.println("Habitacion: "+b.getNumCuarto()+" En el piso: "+a.getIdentificador()+" deshabilitada!");
+                        System.out.println("Habitacion: " + b.getNumCuarto() + " En el piso: " + a.getIdentificador() + " deshabilitada!");
                         System.out.println("");
                     }
                 }
@@ -485,7 +487,7 @@ public class Administrador {
         Scanner input = new Scanner(System.in);
         System.out.println("Pisos existentes: ");
         for (Piso a : this.pisos) {//se recorren los pisos
-            System.out.println("Piso: " + a.getIdentificador()+" Disponibilidad: "+a.isDisponibilidad());
+            System.out.println("Piso: " + a.getIdentificador() + " Disponibilidad: " + a.isDisponibilidad());
         }
         System.out.print("Piso a habilitar: ");
         char piso = input.next().toUpperCase().charAt(0);
@@ -497,7 +499,7 @@ public class Administrador {
                 a.setDisponibilidad(true);
             }
         }
-        System.out.println("Piso "+ piso + " desbloqueado!");
+        System.out.println("Piso " + piso + " desbloqueado!");
         System.out.println("");
     }
 
@@ -505,7 +507,7 @@ public class Administrador {
         Scanner input = new Scanner(System.in);
         System.out.println("Pisos existentes: ");
         for (Piso a : this.pisos) {//recorre los edificios
-            System.out.println("Piso: " + a.getIdentificador()+" Disponibilidad: "+a.isDisponibilidad()); //imprime el identificador del piso
+            System.out.println("Piso: " + a.getIdentificador() + " Disponibilidad: " + a.isDisponibilidad()); //imprime el identificador del piso
         }
         System.out.print("Piso a deshabilitar: ");
         char piso = input.next().toUpperCase().charAt(0);
@@ -517,7 +519,7 @@ public class Administrador {
                 a.setDisponibilidad(false);
             }
         }
-        System.out.println("Piso "+ piso + " bloqueado!");
+        System.out.println("Piso " + piso + " bloqueado!");
         System.out.println("");
     }
 
@@ -532,11 +534,11 @@ public class Administrador {
             int diasPaquete = a.getDias();//obtiene la cantidad de dias a reservar
             System.out.println("Reserva #" + contador + ": Nombre: " + Nombre + " Habitacion: " + pisoHabitacion + numeroHabitacion + " Paquete: " + paqueteHabitacion + " Dias reservados: " + diasPaquete);
         }
-        
+
         System.out.println("");
         System.out.print("Reserva a editar: ");
         int NumeroReservaAModificar = input.nextInt();
-        Reserva ReservaAModificar = this.reservas.get(NumeroReservaAModificar-1); //-1 para captar la cantidad de elementos del ArrayList
+        Reserva ReservaAModificar = this.reservas.get(NumeroReservaAModificar - 1); //-1 para captar la cantidad de elementos del ArrayList
 
         //MENU que permite cambiar los datos uno por uno sin necesidad de modicar los demas si es que no se desea
         System.out.println("");
@@ -546,12 +548,14 @@ public class Administrador {
         System.out.println("4. Modificar Dias reservados");
         System.out.print("Ingrese el numero de opcion que desea modificar: ");
         int opcion = input.nextInt();
+        System.out.println("");
 
         //Menu con las funciones en cada case
         switch (opcion) {
             case 1:
                 System.out.print("Nuevo propietario de la reserva: ");
-                String NuevoNombre = input.nextLine();
+                Scanner input2 = new Scanner(System.in);
+                String NuevoNombre = input2.nextLine();
 
                 for (Huesped a : this.huespedes) {//recorre lista de huespedes buscando el huesped que se quiere cambiar
                     if (a.getNombre() == NuevoNombre) {
@@ -560,14 +564,16 @@ public class Administrador {
                         break;
                     } else {
                         System.out.println("El huesped no existe.");//el huesped que se quiere modificar no existe
+                        System.out.println("");
                         break;
                     }
                 }
+                break;
             case 2:
                 System.out.println("");
                 System.out.println("Pisos disponibles: ");
-                for(Piso a: this.pisos){
-                    System.out.print(a.getIdentificador()+", ");
+                for (Piso a : this.pisos) {
+                    System.out.print(a.getIdentificador() + ", ");
                 }
                 System.out.println("");
                 System.out.print("Piso donde se encuenttra la nueva habitacion: ");
@@ -581,28 +587,28 @@ public class Administrador {
                             if (b.getNumCuarto() == NuevoNumeroDeHabitacion && b.isDisponibilidad()) {//verifica que el numero de cuarto y que este disponible
                                 ReservaAModificar.setHabitacion(b);// si es verdadero pide los datos para modificar habitacion
                                 this.reservas.set(NumeroReservaAModificar - 1, ReservaAModificar);
-                                break;
-                            } else {//es falso es poque la habitacion no existe o no esta disponibel
-                                System.out.println("La habitacion no esxiste o no se encuentra disponible");
+                                System.out.println("Habitacion modificada!");
                                 break;
                             }
                         }
                     }
                 }
+                break;
             case 3://sobreescribe paquete
+                Scanner input3 = new Scanner(System.in);
                 System.out.print("Nuevo paquete para la reserva: ");
-                String NuevoNombrePaquete = input.nextLine();
+                String NuevoNombrePaquete = input3.nextLine().toUpperCase();
 
                 for (Paquete a : this.paquetes) {
                     if (a.getNombre() == NuevoNombrePaquete) {
                         ReservaAModificar.setPaquete(a);
                         this.reservas.set(NumeroReservaAModificar - 1, ReservaAModificar);
-                        break;
-                    } else {
-                        System.out.println("El paquete no existe.");
+                        System.out.println("Paquete modificado!");
+                        System.out.println("");
                         break;
                     }
                 }
+                break;
             case 4:
                 //sobreescribe la cantidad de dias reservados
                 System.out.print("Nueva cantidad de dias: ");
@@ -610,6 +616,8 @@ public class Administrador {
                 if (NuevosDias <= 7) {
                     ReservaAModificar.setDias(NuevosDias);
                     this.reservas.set(NumeroReservaAModificar - 1, ReservaAModificar);
+                    System.out.println("Dias modificados!");
+                    System.out.println("");
                     break;
                 } else {
                     System.out.println("La cantidad de dias no es valida");
@@ -711,13 +719,13 @@ public class Administrador {
                 break;
             case 11:
                 int newPrecio;
-                System.out.println("Nuevo precio base para habitaciones simples: ");
+                System.out.print("Nuevo precio base para habitaciones simples: ");
                 newPrecio = lector.nextInt();
                 CambiarPrecioBaseSimple(newPrecio);
                 break;
             case 12:
                 int newPrecio1;
-                System.out.println("Nuevo precio base para habitaciones dobles: ");
+                System.out.print("Nuevo precio base para habitaciones dobles: ");
                 newPrecio1 = lector.nextInt();
                 CambiarPrecioBaseDoble(newPrecio1);
                 break;
