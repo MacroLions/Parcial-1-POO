@@ -387,23 +387,33 @@ public class Administrador {
     public void HabilitarHabitacion() { //ya
         int habitacion = 0;
         char piso;
-
         Scanner input = new Scanner(System.in);
+        
+        System.out.println("Pisos existentes: ");
         for (Piso a : this.pisos) {
-            for (Habitacion b : a.getHabitaciones()) {//se recorren las habitaciones
-                System.out.println("Numero de habitacion: " + b.getNumCuarto() + " Piso de habitacion: " + b.getPiso() + " Disponibilidad: " + b.isDisponibilidad());
+                System.out.println("Piso: " + a.getIdentificador());
+        }
+        System.out.print("Piso donde se encuentra habitacion: ");
+        piso = input.next().toUpperCase().charAt(0);
+        
+        System.out.println("Habitaciones en el piso "+piso+": ");
+        for(Piso b: this.pisos ){
+            if(b.getIdentificador()==piso){
+                for(Habitacion c : b.getHabitaciones()){
+                    System.out.println("Habitacion #"+c.getNumCuarto()+" Disponibilidad:"+c.isDisponibilidad());
+                }
             }
         }
-        System.out.print("Piso donde se encuentra habitaciÃƒÂ³n: ");
-        piso = input.next().charAt(0);
-        System.out.print("Numero de habitacion: ");
+        System.out.print("Numero de habitacion a Habilitar: ");
         habitacion = input.nextInt();
 
         for (Piso a : this.pisos) {//se recorren los pisos
             if (a.getIdentificador() == piso) { //si el identificador ingresado coincide con un piso existente
                 for (Habitacion b : a.getHabitaciones()) {//se recorren sus habitaciones
                     if (b.getNumCuarto() == habitacion) {//si el numero de cuarto ingresado con un habitacion existemte
-                        b.setDisponibilidad(true);//entonces la habitacion está dispobinle
+                        b.setDisponibilidad(true);//entonces la habitacion está disponible
+                        System.out.println("Habitacion: "+b.getNumCuarto()+" En el piso: "+a.getIdentificador()+" habilitada!");
+                        System.out.println("");
                     }
                 }
             }
@@ -412,26 +422,36 @@ public class Administrador {
 
     }
 
-    public void DeshabilitarHabitacion() {//ya
+    public void DeshabilitarHabitacion() { //ya
         int habitacion = 0;
         char piso;
-
         Scanner input = new Scanner(System.in);
+        
         System.out.println("Pisos existentes: ");
         for (Piso a : this.pisos) {
-            System.out.println("Piso: " + a.getIdentificador() + " Cantidad de habitaciones: " + a.getHabitaciones().size());
+                System.out.println("Piso: " + a.getIdentificador());
         }
         System.out.print("Piso donde se encuentra habitacion: ");
         piso = input.next().toUpperCase().charAt(0);
-        System.out.print("Numero de habitacion: ");
+        
+        System.out.println("Habitaciones en el piso "+piso+": ");
+        for(Piso b: this.pisos ){
+            if(b.getIdentificador()==piso){
+                for(Habitacion c : b.getHabitaciones()){
+                    System.out.println("Habitacion #"+c.getNumCuarto()+" Disponibilidad:"+c.isDisponibilidad());
+                }
+            }
+        }
+        System.out.print("Numero de habitacion a Deshabilitar: ");
         habitacion = input.nextInt();
 
-        for (Piso a : this.pisos) {//si el identificador ingresado coincide con un piso existente
-            if (a.getIdentificador() == piso) {
-                for (Habitacion b : a.getHabitaciones()) {//si el identificador ingresado coincide con las hbaitaciones existente
+        for (Piso a : this.pisos) {//se recorren los pisos
+            if (a.getIdentificador() == piso) { //si el identificador ingresado coincide con un piso existente
+                for (Habitacion b : a.getHabitaciones()) {//se recorren sus habitaciones
                     if (b.getNumCuarto() == habitacion) {//si el numero de cuarto ingresado con un habitacion existemte
-                        b.setDisponibilidad(false);
-                        System.out.println("Habitacion #" + b.getNumCuarto() + " En el piso: " + a.getIdentificador() + " ha sido deshabilitada.");
+                        b.setDisponibilidad(false);//entonces la habitacion está disponible
+                        System.out.println("Habitacion: "+b.getNumCuarto()+" En el piso: "+a.getIdentificador()+" deshabilitada!");
+                        System.out.println("");
                     }
                 }
             }
@@ -444,35 +464,40 @@ public class Administrador {
         Scanner input = new Scanner(System.in);
         System.out.println("Pisos existentes: ");
         for (Piso a : this.pisos) {//se recorren los pisos
-            System.out.println("Piso: " + a.getIdentificador());
+            System.out.println("Piso: " + a.getIdentificador()+" Disponibilidad: "+a.isDisponibilidad());
         }
-        System.out.print("Piso a bloquear: ");
-        char piso = input.next().charAt(0);
+        System.out.print("Piso a habilitar: ");
+        char piso = input.next().toUpperCase().charAt(0);
         for (Piso a : this.pisos) {//se recorren los pisos
             if (a.getIdentificador() == piso) {//verifica que el piso exista
                 for (Habitacion b : a.getHabitaciones()) {//recorre las haitaciones
                     b.setDisponibilidad(true);
                 }
+                a.setDisponibilidad(true);
             }
         }
-
+        System.out.println("Piso "+ piso + " desbloqueado!");
+        System.out.println("");
     }
 
     public void DeshabilitarPiso() { //ya
         Scanner input = new Scanner(System.in);
         System.out.println("Pisos existentes: ");
         for (Piso a : this.pisos) {//recorre los edificios
-            System.out.println("Piso: " + a.getIdentificador()); //imprime el identificador del piso
+            System.out.println("Piso: " + a.getIdentificador()+" Disponibilidad: "+a.isDisponibilidad()); //imprime el identificador del piso
         }
-        System.out.print("Piso a bloquear: ");
-        char piso = input.next().charAt(0);
+        System.out.print("Piso a deshabilitar: ");
+        char piso = input.next().toUpperCase().charAt(0);
         for (Piso a : this.pisos) {//recorre los piso
             if (a.getIdentificador() == piso) {//verifica que el piso exista
                 for (Habitacion b : a.getHabitaciones()) {//recorre habitaciones
                     b.setDisponibilidad(false);
                 }
+                a.setDisponibilidad(false);
             }
         }
+        System.out.println("Piso "+ piso + " bloqueado!");
+        System.out.println("");
     }
 
     public void ModificarReserva() {
