@@ -71,10 +71,16 @@ public class Administrador {
     //´a´ es una variable de tipo paquete donde se almacena los datos del paquete escogido
     public Paquete EscogerPaquete() {
         Scanner input = new Scanner(System.in);
+        System.out.print("Paquetes disponibles: ");
+        for(Paquete a: this.paquetes){
+            System.out.print(a.getNombre()+", ");
+        }
+        System.out.println("");
         System.out.print("Nombre del paquete a escoger: ");
         String NombrePaquete = input.nextLine().toUpperCase();//pide el nombre del paquete que desea
         for (Paquete a : this.paquetes) {//se recorre el ArrayList "paquete" 
             if (a.getNombre().equals(NombrePaquete) == true) { //compara el nombre del paquete que se agregue para saber si existe dentro de la lista
+                System.out.println("");
                 return a; //retorna el paquete
             }
         }
@@ -91,14 +97,32 @@ public class Administrador {
      */
     public Habitacion EscogerHabitacion() {
         Scanner input = new Scanner(System.in);
-        System.out.print("Identificador de piso: ");
+        
+        System.out.println("Pisos disponibles: ");
+        for(Piso a: this.pisos){
+            System.out.print(a.getIdentificador()+", ");
+        }
+        
+        System.out.println("");
+        System.out.print("Identificador de piso a escoger: ");
         char pisoHabitacion = input.nextLine().toUpperCase().charAt(0);
-        System.out.print("Ingrese el numero de la habitacion: ");
+        System.out.println("");
+        System.out.println("Habitaciones diponibles en piso "+pisoHabitacion+": ");
+        for(Piso a: this.pisos){
+            if(a.getIdentificador()==pisoHabitacion){
+                for(Habitacion b: a.getHabitaciones()){
+                    System.out.print("Habitacion #"+b.getNumCuarto()+", ");
+                }
+            }
+        }
+        System.out.println("");
+        System.out.print("Ingrese el numero de la habitacion a escoger: ");
         int numHabitacion = input.nextInt();
         for (Piso a : this.pisos) {
             if (a.getIdentificador() == pisoHabitacion) {
                 for (Habitacion b : a.getHabitaciones()) {
                     if (b.getNumCuarto() == numHabitacion) {
+                        System.out.println("");
                         return b;
                     }
                 }
@@ -701,16 +725,20 @@ public class Administrador {
 
         Scanner lector = new Scanner(System.in);
         int eleccion;
+        System.out.print("Opcion: ");
         eleccion = lector.nextInt();
         switch (eleccion) {
             case 1:
+                System.out.println("");
                 Paquete paquete = EscogerPaquete();
                 Habitacion habitacion = EscogerHabitacion();
                 CreacionReserva(paquete, habitacion);
-                System.out.println("Reserva Creada!");
+                System.out.println("");
+                System.out.println("Reserva Creada! :D");
                 System.out.println("");
                 break;
             case 2:
+                System.out.println("");
                 VerReserva();
                 break;
         }
@@ -726,12 +754,15 @@ public class Administrador {
         Scanner lector = new Scanner(System.in);
 
         int opcion = 0;
+        System.out.print("Opcion: ");
         opcion = lector.nextInt();
         switch (opcion) {
             case 1:
+                System.out.println("");
                 MenuReserva();
                 return true;
             case 2:
+                System.out.println("");
                 MenuConfiguracion();
                 return true;
             case 3:
