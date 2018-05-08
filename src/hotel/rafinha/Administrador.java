@@ -106,6 +106,7 @@ public class Administrador {
         System.out.println("");
         
         boolean gato = false;
+        System.out.print("Ingrese el piso a escoger: ");
         char pisoHabitacion = input.nextLine().toUpperCase().charAt(0);
         
         while (gato == false){
