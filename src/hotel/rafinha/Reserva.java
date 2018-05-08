@@ -26,12 +26,14 @@ public class Reserva {
      * @param paquete objeto del tipo paquete heredando todos los atributos de su respectiva clase.
      * @param habitacion objeto del tipo habitacion heredando todos los atributos de su respectiva clase.
      * @param dias objeto del tipo int para guardar los dias que tomara la reserva del huesped.
+     * @param piso Se obtendra segun la habitacion establecida.
      */
     Reserva(Huesped huesped, Paquete paquete, Habitacion habitacion, int dias){
         this.huesped=huesped;
         this.paquete=paquete;
         this.habitacion=habitacion;
         this.dias=dias;
+        this.piso=habitacion.getPiso();
         
     }
     
