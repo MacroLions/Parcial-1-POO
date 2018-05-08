@@ -112,7 +112,7 @@ public class HotelRafinha {
         boolean menu = true;
         
         while(menu==true){
-            admin.MenuPrincipal();    
+            menu=admin.MenuPrincipal();    
         }
         
     }
