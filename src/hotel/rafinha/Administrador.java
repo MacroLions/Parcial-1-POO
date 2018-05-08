@@ -160,11 +160,49 @@ public class Administrador {
 
     //Revisar luego. O hacer uno para ver TODAS LAS RESERVAS.
     public void VerReserva() {
-        //imprime todo lo que hay en el array reservas      
+        //imprime todo lo que hay en el array reservas   
+        Scanner input = new Scanner(System.in);
+        int opc = input.nextInt();
 
-        for (int i = 0; i < this.reservas.size(); i++) {
-            System.out.println("Reserva: ");
-            System.out.println(this.reservas.get(i));
+        System.out.println("1. Ver todas las reservas || 2. Ver reserva especifica");
+
+        switch (opc) {
+            case 1:
+                System.out.println("Todas las reservas: ");
+
+                for (Reserva a : this.reservas) {
+                    System.out.println("Reservas: ");
+
+                    System.out.println("Nombre del Huesped: " + a.getHuesped().getNombre());
+                    System.out.println("Paquete" + a.getTipoPaquete());
+                    System.out.println("Piso: " + a.getPiso());
+                    System.out.println("Habitacion: " + a.getHabitacion());
+                    System.out.println("Dias reservados: " + a.getDias());
+                    System.out.println("Precio total: " + a.getPrecioTotal());
+                }
+
+                break;
+            case 2:
+
+                System.out.println("Ingrese el numero de la reserva: ");
+                int numReservaAImprimir = input.nextInt();
+                int contador = 0;
+                System.out.println("Su reserva: ");
+
+                for (Reserva a: this.reservas) {
+                    contador++; //contador ingrementa en uno cada vez que se 
+                    if (numReservaAImprimir == contador) {
+                        System.out.println("Reserva: ");
+
+                        System.out.println("Nombre del Huesped: " + a.getHuesped().getNombre());
+                        System.out.println("Paquete" + a.getTipoPaquete());
+                        System.out.println("Piso: " + a.getPiso());
+                        System.out.println("Habitacion: " + a.getHabitacion());
+                        System.out.println("Dias reservados: " + a.getDias());
+                        System.out.println("Precio total: " + a.getPrecioTotal());
+                    }
+                }
+                break;
         }
     }
 
@@ -275,7 +313,7 @@ public class Administrador {
 
     /*clasifica las habitaciones por PARES E IMPARES
     si es PAR se modifica el precio
-    */
+     */
     public void CambiarPrecioBaseSimple(int newPrecio) { //ya
         int ParImpar = 1;
         for (Piso a : this.pisos) {
@@ -292,8 +330,8 @@ public class Administrador {
 
     /*clasifica las habitaciones por PARES E IMPARES
     si es IMPAR se modifica el precio
-    */
-    public void CambiarPrecioBaseDoble(int newPrecio) { 
+     */
+    public void CambiarPrecioBaseDoble(int newPrecio) {
         int ParImpar = 1;
         for (Piso a : this.pisos) {
             for (Habitacion b : a.getHabitaciones()) {
@@ -483,7 +521,7 @@ public class Administrador {
                 for (Piso a : this.pisos) {
                     if (a.getIdentificador() == piso) {//ve que el pisoexiste
                         for (Habitacion b : a.getHabitaciones()) {//recorre habitaciones
-                            if (b.getNumCuarto() == NuevoNumeroDeHabitacion && b.isDisponibilidad()){//verifica que el numero de cuarto y que este disponible
+                            if (b.getNumCuarto() == NuevoNumeroDeHabitacion && b.isDisponibilidad()) {//verifica que el numero de cuarto y que este disponible
                                 ReservaAModificar.setHabitacion(b);// si es verdadero pide los datos para modificar habitacion
                                 this.reservas.set(NumeroReservaAModificar - 1, ReservaAModificar);
                                 break;
@@ -524,6 +562,7 @@ public class Administrador {
 
     }
 //elimina una reserva de la lista donde se almancenan
+
     public void EliminarReserva() {
         int contador = 0;
         Scanner input = new Scanner(System.in);
@@ -535,13 +574,13 @@ public class Administrador {
         this.reservas.remove(reserva);//elimina la reserva de la lista
 
     }
-/*
+
+    /*
     EXISTEN DOS MENU PRINCIPALES
     UNO (MENU CONFIGURACION)DONDE SE REALIZAN TODAS LAS CONFIGURACIONES QUE SE PUEDE HACER A LAS HABITACIONES,
     PISOS, RESERVACIONES Y PRECIOS
     Y OTRO MENU(MENU RESERVA) DONDE SE PUEDE CREAR LAS RESERVAS Y TAMBIEN SE PUEDEN VER
-    */
-    
+     */
     public void MenuConfiguracion() {
         Scanner lector = new Scanner(System.in);
 //IMPRIME TODAS LAS OPCIONES DIPONIBLES EN EL MENU CONFIGURACION
@@ -618,6 +657,7 @@ public class Administrador {
         }
     }
 //segundo MENU
+
     public void MenuReserva() {
         System.out.println("** MENU RESERVA **");
         System.out.println("1. Crear Reservacion ");
