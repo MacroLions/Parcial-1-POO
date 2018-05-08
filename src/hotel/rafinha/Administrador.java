@@ -289,31 +289,28 @@ public class Administrador {
         int contador = 0;
         boolean pisoExiste = false;
         boolean habExiste = false;
-//mientras en contadores sea menor o igual a la cantidad de pisos
-        while (contador <= this.pisos.size()) {
-            for (Piso a : this.pisos) {//recorre los pisos
-                if (a.getIdentificador() == identificador) { //verifica que los identificadores sean iguales
-                    pisoExiste = true;
-                    for (Habitacion b : a.getHabitaciones()) {//verifica el numero y el identificador ingresados existan en el ArraList
-                        if (b.getNumCuarto() == numHabitacion) {
-                            habExiste = true;
-                            a.getHabitaciones().remove(b);//si existe entonces elimina la habitación de lista
-                            break;
-                        }
-                    }
-                    if (habExiste == false) {
-                        System.out.println("La habitacion no existe.");
+        for (Piso a : this.pisos) {//recorre los pisos
+            if (a.getIdentificador() == identificador) { //verifica que los identificadores sean iguales
+                pisoExiste = true;
+                for (Habitacion b : a.getHabitaciones()) {//verifica el numero y el identificador ingresados existan en el ArraList
+                    if (b.getNumCuarto() == numHabitacion) {
+                        habExiste = true;
+                        a.getHabitaciones().remove(b);//si existe entonces elimina la habitación de lista
+                        System.out.println("La habitacion #"+b.getNumCuarto()+" del piso: "+a.getIdentificador()+" ha sido eliminada.");
+                        System.out.println("");
                         break;
                     }
                 }
+                if (habExiste == false) {
+                    System.out.println("La habitacion no existe.");
+                    break;
+                }
             }
-            if (pisoExiste == false) { //cuando el piso no existe
-                System.out.println("El piso no existe.");
-                break;
-            } else if (pisoExiste == true && habExiste == false) { //cuando el piso existe pero no existe la habitacion
-                System.out.println("La habitacion no existe");
-                break;
-            }
+        }
+        if (pisoExiste == false) { //cuando el piso no existe
+            System.out.println("El piso no existe.");
+        } else if (pisoExiste == true && habExiste == false) { //cuando el piso existe pero no existe la habitacion
+            System.out.println("La habitacion no existe en el piso");
         }
     }
 
@@ -627,7 +624,7 @@ public class Administrador {
             case 5:
                 System.out.println("Pisos existentes: ");
                 for (Piso a : this.pisos) {
-                    System.out.print(a.getIdentificador()+" ");
+                    System.out.print(a.getIdentificador() + " ");
                 }
                 System.out.println("");
                 System.out.print("Ingrese el identificador del piso que desea eliminar: ");
@@ -635,11 +632,15 @@ public class Administrador {
                 BorrarPiso(piso1);
                 break;
             case 6:
-                System.out.println("Ingrese el identificador de la habitacion que desea borrar");
-                char habitacion = input.next().charAt(0);
-                System.out.println("Ingrese el numero del cuarto que desea borrar");
+                for (Piso a : this.pisos) {
+                    System.out.println("Piso: " + a.getIdentificador() + " Cantidad de habitaciones: " + a.getHabitaciones().size());
+                }
+                System.out.print("Ingrese el identificador del piso donde esta ubicada la habitacion a eliminar: ");
+                char pisoEliminar = input.next().toUpperCase().charAt(0);
+                System.out.print("Ingrese el numero de habitacion que desea borrar: ");
                 int num = lector.nextInt();
-                BorrarHabitacion(habitacion, num);
+
+                BorrarHabitacion(pisoEliminar, num);
                 break;
             case 7:
                 HabilitarHabitacion();
