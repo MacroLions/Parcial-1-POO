@@ -21,6 +21,11 @@ public class Administrador {
     public ArrayList<Reserva> reservas = new ArrayList();
     public ArrayList<Huesped> huespedes = new ArrayList();
     public ArrayList<Paquete> paquetes = new ArrayList();
+    
+    /**
+     * Crea un nuevo objeto del tipo huesped lo agrega a la lista de huespedes y verifica sus reservaciones.
+     * @return newHuesped, que contiene el nombre, numero de DUI y tarjeta de credito del nuevo huesped.
+     */
 
     public Huesped CreacionHuesped() {
         Scanner lector = new Scanner(System.in);
@@ -53,7 +58,10 @@ public class Administrador {
 
     }
 
-    
+    /**
+     * Recibe elnombre del paquete a elegir y verifica que este exista.
+     * @return Si el paquete existe retorna el paquete solicitado, en otro caso retorna null.
+     */
     public Paquete EscogerPaquete(){
         Scanner input = new Scanner(System.in);
         System.out.print("Nombre del paquete a escoger: ");
@@ -70,7 +78,11 @@ public class Administrador {
         return null;
         
     }
-
+    
+    /**
+     * Recibe el piso y habitacion a elegir y verifica sus existencias.
+     * @return retora la habitacion solicitado si esta existe o null en caso contrario.
+     */
     public Habitacion EscogerHabitacion() {
         Scanner input = new Scanner(System.in);
         System.out.print("Identificador de piso: ");
@@ -93,6 +105,12 @@ public class Administrador {
         return null;
     }
 
+    /**
+     * 
+     * @param paquete
+     * @param habitacion
+     * @return 
+     */
     public Reserva CreacionReserva(Paquete paquete, Habitacion habitacion) {
         Huesped newHuesped = CreacionHuesped(); // Modificar SOUTS DE CREACION HUESPED
         //AquÃƒÂ­ se creo el huesped con la funcion anterior.
