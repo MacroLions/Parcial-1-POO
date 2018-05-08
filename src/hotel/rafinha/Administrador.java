@@ -92,17 +92,14 @@ public class Administrador {
     public Habitacion EscogerHabitacion() {
         Scanner input = new Scanner(System.in);
         System.out.print("Identificador de piso: ");
-        char pisoHabitacion = input.nextLine().charAt(0);
+        char pisoHabitacion = input.nextLine().toUpperCase().charAt(0);
         System.out.print("Ingrese el numero de la habitacion: ");
         int numHabitacion = input.nextInt();
         for (Piso a : this.pisos) {
             if (a.getIdentificador() == pisoHabitacion) {
                 for (Habitacion b : a.getHabitaciones()) {
-                    if (b.getNumCuarto() == numHabitacion && b.isDisponibilidad()) {
+                    if (b.getNumCuarto() == numHabitacion) {
                         return b;
-                    } else {
-                        System.out.println("La habitacion no existe o no esta disponible.");
-                        return null;
                     }
                 }
             }
@@ -721,10 +718,10 @@ public class Administrador {
     }
 
     //PRINCIAPAL DONDE LOS MENU CONFIGURACION Y RESERVA SE EJECUTAN
-    public void MenuPrincipal() {
+    public boolean MenuPrincipal() {
         System.out.println("** MENU PRINCIPAL **");
 
-        System.out.println("** 1. MENU RESERVACION || 2. MENU CONFIGURACION ** ");
+        System.out.println("** 1. MENU RESERVACION || 2. MENU CONFIGURACION || 3. SALIR ** ");
 
         Scanner lector = new Scanner(System.in);
 
@@ -733,12 +730,14 @@ public class Administrador {
         switch (opcion) {
             case 1:
                 MenuReserva();
-                break;
+                return true;
             case 2:
                 MenuConfiguracion();
-                break;
-
+                return true;
+            case 3:
+                return false;
         }
+        return false;
     }
 
 }
