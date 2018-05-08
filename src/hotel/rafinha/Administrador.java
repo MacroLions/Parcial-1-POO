@@ -104,8 +104,23 @@ public class Administrador {
         }
 
         System.out.println("");
-        System.out.print("Identificador de piso a escoger: ");
+        
+        boolean gato = false;
         char pisoHabitacion = input.nextLine().toUpperCase().charAt(0);
+        
+        while (gato == false){
+            for(Piso a: this.pisos){
+                if(a.getIdentificador()==pisoHabitacion){
+                    gato=true;
+                }
+            }
+            if(gato == false){
+                System.out.print("Piso no existente, por favor ingrese un piso valido: ");
+                pisoHabitacion = input.nextLine().toUpperCase().charAt(0);
+            }
+        }
+  
+        
         System.out.println("");
         System.out.println("Habitaciones diponibles en piso " + pisoHabitacion + ": ");
         for (Piso a : this.pisos) {
@@ -173,6 +188,7 @@ public class Administrador {
             return false;
         }
     }
+    
 
     //Revisar luego. O hacer uno para ver TODAS LAS RESERVAS.
     public void VerReserva() {
