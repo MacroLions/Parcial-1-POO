@@ -16,6 +16,14 @@ public class Habitacion {
     private double precioBase;
     
     /**
+     * Constructor Vacio para incializar objetos de la clase Habitacion.
+     */
+    
+    public Habitacion(){
+        
+    }
+    
+    /**
      * Constructor en el que se inicializan los objetos de la clase habitacion.
      * @param numCuarto
      * @param disponibilidad
@@ -28,6 +36,7 @@ public class Habitacion {
         this.piso = piso;
         this.precioBase = precioBase;
     }
+    
     
     /**
      * Nos sirve para obtener una instancia del objeto NumCuarto para poder utilizarlo.
