@@ -19,32 +19,42 @@ public class HotelRafinha {
     public static void main(String[] args) {
         Scanner dato = new Scanner(System.in);
 
-        System.out.println("SISTEMA DE ADMINISTRACION DEL HOTEL 'VIÑA RAFINHA'");
+        /*
+        LOGIN PRINCIPAL DONDE SE PIDE AL ADMINISTRADOR DEL SISTEM ENGRESAR LAS 
+        CREDENCIALES:
+        USURARIO: USUARIO
+        CONTRASENIA: CONTRASENIA
+        
+        */
+        
+        System.out.println("SISTEMA DE ADMINISTRACION DEL HOTEL 'VIÃ‘A RAFINHA'");
         System.out.println("Ingrese sus credenciales por favor");
         System.out.print("Usuario: ");
-        String usuario = dato.nextLine().toUpperCase();
-        System.out.print("Contraseña: ");
-        String contra = dato.nextLine().toUpperCase();
+        String usuario = dato.nextLine().toUpperCase(); //requiere mayusculas
+        System.out.print("ContraseÃ±a: ");
+        String contra = dato.nextLine().toUpperCase(); //requiere mayusculas
 
+        //Verifica que las credenciales ingresadas (USUARIO Y CONTRASENIA) sean validas para poder ingresar al siguiente menú
         while (usuario != "USUARIO" && contra != "CONTRASENIA") {
-            System.out.println("Usuario o contraseña incorrectos, intentelo de nuevo");
+            System.out.println("Usuario o contraseÃ±a incorrectos, intentelo de nuevo");
             System.out.print("Usuario: ");
-            usuario = dato.nextLine().toUpperCase();
-            System.out.print("Contraseña: ");
-            contra = dato.nextLine().toUpperCase();
+            usuario = dato.nextLine().toUpperCase(); //requiere mayusculas
+            System.out.print("ContraseÃ±a: ");
+            contra = dato.nextLine().toUpperCase(); //requiere mayusculas
             break;
         }
 
-        System.out.println("¡¡¡¡¡¡¡BIENVENIDO ADMINISTRADOR DEL HOTEL 'VIÑA RAFINHA'!!!!!!! :D ");
-        //Aqui iria el menu y los submenus.... ¡Es tu momento de brillar mango Dianita! ¡Make it shineee! Ref. Victorius cancion inicial
+        System.out.println("Â¡Â¡Â¡Â¡Â¡Â¡Â¡BIENVENIDO ADMINISTRADOR DEL HOTEL 'VIÃ‘A RAFINHA'!!!!!!! :D ");
+        
 
-        //OBJETO ADMINISTRADOR
+        //OBJETO ADMINISTRADOR que accede a todas las funciones del programa
         Administrador admin = new Administrador();
 
+        //Objetos inicializados de los Paquetes que ofrece el hotel por defecto BASICO Y PREMIUM 
         Paquete Basico = new Paquete("Basico", "Cosas basicas", 10);
         Paquete Premium = new Paquete("Premium", "Cosas premium", 150);
-        admin.paquetes.add(Premium);
-        admin.paquetes.add(Basico);
+        admin.paquetes.add(Premium);//paquete se agrega a la lista de paquetes ya que puede existir mas de uno
+        admin.paquetes.add(Basico);//paquete se agrega a la lista de paquetes ya que puede existir mas de uno
 
         Piso A = new Piso('A');
         int a = 1;
