@@ -674,7 +674,7 @@ public class Administrador {
 
     }
 //elimina una reserva de la lista donde se almancenan
-
+// Merlin y Solomon estuvieron aqui.
     public void EliminarReserva() {
         int contador = 0;
         Scanner input = new Scanner(System.in);
@@ -764,6 +764,7 @@ public class Administrador {
                 HabilitarPiso();
                 break;
             case 10:
+                System.out.println("");
                 DeshabilitarPiso();
                 break;
             case 11:
