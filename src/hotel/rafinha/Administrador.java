@@ -532,12 +532,14 @@ public class Administrador {
             int diasPaquete = a.getDias();//obtiene la cantidad de dias a reservar
             System.out.println("Reserva #" + contador + ": Nombre: " + Nombre + " Habitacion: " + pisoHabitacion + numeroHabitacion + " Paquete: " + paqueteHabitacion + " Dias reservados: " + diasPaquete);
         }
-
+        
+        System.out.println("");
         System.out.print("Reserva a editar: ");
         int NumeroReservaAModificar = input.nextInt();
-        Reserva ReservaAModificar = this.reservas.get(NumeroReservaAModificar - 1); //-1 para captar la cantidad de elementos del ArrayList
+        Reserva ReservaAModificar = this.reservas.get(NumeroReservaAModificar-1); //-1 para captar la cantidad de elementos del ArrayList
 
         //MENU que permite cambiar los datos uno por uno sin necesidad de modicar los demas si es que no se desea
+        System.out.println("");
         System.out.println("1. Modificar Huesped");
         System.out.println("2. Modificar Habitacion");
         System.out.println("3. Modificar Paquete");
@@ -562,13 +564,19 @@ public class Administrador {
                     }
                 }
             case 2:
+                System.out.println("");
+                System.out.println("Pisos disponibles: ");
+                for(Piso a: this.pisos){
+                    System.out.print(a.getIdentificador()+", ");
+                }
+                System.out.println("");
                 System.out.print("Piso donde se encuenttra la nueva habitacion: ");
-                char piso = input.nextLine().charAt(0);
+                char pisoNuevo = input.next().toUpperCase().charAt(0);
                 System.out.print("Numero de la nueva habitacion: ");
                 int NuevoNumeroDeHabitacion = input.nextInt();
 
                 for (Piso a : this.pisos) {
-                    if (a.getIdentificador() == piso) {//ve que el pisoexiste
+                    if (a.getIdentificador() == pisoNuevo) {//ve que el pisoexiste
                         for (Habitacion b : a.getHabitaciones()) {//recorre habitaciones
                             if (b.getNumCuarto() == NuevoNumeroDeHabitacion && b.isDisponibilidad()) {//verifica que el numero de cuarto y que este disponible
                                 ReservaAModificar.setHabitacion(b);// si es verdadero pide los datos para modificar habitacion
@@ -657,6 +665,7 @@ public class Administrador {
                 EliminarReserva();
                 break;
             case 2:
+                System.out.println("");
                 ModificarReserva();
                 break;
             case 3:
