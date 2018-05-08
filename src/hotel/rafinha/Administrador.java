@@ -45,19 +45,7 @@ public class Administrador {
         //Se agrega a la lista de huespedes.
         //verifica que no tenga mas de 2 reservaciones
         this.huespedes.add(newHuesped);
-        int cont = 0;
-        for (int i = 0; i < huespedes.size(); i++) {
-            if (cont == 0 || cont == 1) {
-                if (huespedes.contains(newHuesped)) {
-                    cont++;
-                }
-            } else {
-                System.out.println("No es posible realizar reservaciÃƒÂ³n");
-                System.out.println("Huesped alcanzÃƒÂ³ el mÃƒÂ¡ximo nÃƒÂºmero de reservas");
-            }
-        }
-        //Este this podrÃƒÂ­a ir en el menÃƒÂº, pero lo dejarÃƒÂ© aquÃƒÂ­ para mientras
-        //Return por si se usa luego???? Si no, se cambiaria el tipo de funcion a void.
+        
         return newHuesped;
 
     }
@@ -78,15 +66,28 @@ public class Administrador {
         System.out.println("");
         System.out.print("Nombre del paquete a escoger: ");
         String NombrePaquete = input.nextLine().toUpperCase();//pide el nombre del paquete que desea
+
+        boolean gato = false;
+
+        while (gato == false) {
+            for (Paquete a : this.paquetes) {
+                if (a.getNombre().equals(NombrePaquete)) {
+                    gato = true;
+                }
+            }
+            if (gato == false) {
+                System.out.print("El paquete no existe. Escoja un paquete valido: ");
+                NombrePaquete = input.nextLine().toUpperCase();
+            }
+        }
+
         for (Paquete a : this.paquetes) {//se recorre el ArrayList "paquete" 
             if (a.getNombre().equals(NombrePaquete) == true) { //compara el nombre del paquete que se agregue para saber si existe dentro de la lista
                 System.out.println("");
                 return a; //retorna el paquete
             }
         }
-        System.out.println("El paquete no existe.");
         return null;
-
     }
 
     /**
@@ -104,24 +105,23 @@ public class Administrador {
         }
 
         System.out.println("");
-        
+
         boolean gato = false;
         System.out.print("Ingrese el piso a escoger: ");
         char pisoHabitacion = input.nextLine().toUpperCase().charAt(0);
-        
-        while (gato == false){
-            for(Piso a: this.pisos){
-                if(a.getIdentificador()==pisoHabitacion){
-                    gato=true;
+
+        while (gato == false) {
+            for (Piso a : this.pisos) {
+                if (a.getIdentificador() == pisoHabitacion) {
+                    gato = true;
                 }
             }
-            if(gato == false){
+            if (gato == false) {
                 System.out.print("Piso no existente, por favor ingrese un piso valido: ");
                 pisoHabitacion = input.nextLine().toUpperCase().charAt(0);
             }
         }
-  
-        
+
         System.out.println("");
         System.out.println("Habitaciones diponibles en piso " + pisoHabitacion + ": ");
         for (Piso a : this.pisos) {
@@ -134,6 +134,22 @@ public class Administrador {
         System.out.println("");
         System.out.print("Ingrese el numero de la habitacion a escoger: ");
         int numHabitacion = input.nextInt();
+
+        boolean gato2 = false;
+        while (gato2 == false) {
+            for (Piso a : this.pisos) {
+                for (Habitacion b : a.getHabitaciones()) {
+                    if (b.getNumCuarto() == numHabitacion) {
+                        gato2 = true;
+                    }
+                }
+
+            }
+            if (gato2 == false) {
+                System.out.print("Habitacion no existente, por favor ingrese una habitacion valida: ");
+                numHabitacion = input.nextInt();
+            }
+        }
         for (Piso a : this.pisos) {
             if (a.getIdentificador() == pisoHabitacion) {
                 for (Habitacion b : a.getHabitaciones()) {
@@ -161,8 +177,10 @@ public class Administrador {
         int dias = lector.nextInt();
 
         //Verifica que no tenga 7 o mas dias reservados
-        if (dias > 7) {
+        while (dias > 7) {
             System.out.println("Supera el maximo de dias posibles a reservar.");
+            System.out.print("Ingrese cantidad de dias valido: ");
+            dias = lector.nextInt();
         }
         //luego de recoger todos los parametros necesario la reserva se hace efectiva, es creadaa
 
@@ -189,7 +207,6 @@ public class Administrador {
             return false;
         }
     }
-    
 
     //Revisar luego. O hacer uno para ver TODAS LAS RESERVAS.
     public void VerReserva() {
@@ -550,6 +567,7 @@ public class Administrador {
             String paqueteHabitacion = a.getPaquete().getNombre();//obtiene el paquete seleccionado
             int diasPaquete = a.getDias();//obtiene la cantidad de dias a reservar
             System.out.println("Reserva #" + contador + ": Nombre: " + Nombre + " Habitacion: " + pisoHabitacion + numeroHabitacion + " Paquete: " + paqueteHabitacion + " Dias reservados: " + diasPaquete);
+            contador++;
         }
 
         System.out.println("");
@@ -572,18 +590,23 @@ public class Administrador {
             case 1:
                 System.out.print("Nuevo propietario de la reserva: ");
                 Scanner input2 = new Scanner(System.in);
-                String NuevoNombre = input2.nextLine();
+                String NuevoNombre = input2.nextLine().toUpperCase();
+                boolean gato = false;
 
                 for (Huesped a : this.huespedes) {//recorre lista de huespedes buscando el huesped que se quiere cambiar
-                    if (a.getNombre() == NuevoNombre) {
+                    if (a.getNombre().toUpperCase().equals(NuevoNombre)) {
                         ReservaAModificar.setHuesped(a);//si se encuentra se pide ingresa al nuevo
                         this.reservas.set(NumeroReservaAModificar - 1, ReservaAModificar);
-                        break;
-                    } else {
-                        System.out.println("El huesped no existe.");//el huesped que se quiere modificar no existe
+                        System.out.println("Propietario de reserva modificado!");
                         System.out.println("");
+                        gato = true;
                         break;
+
                     }
+                }
+                if (gato == false) {
+                    System.out.println("El huesped nuevo no existe.");
+                    System.out.println("");
                 }
                 break;
             case 2:
@@ -601,10 +624,12 @@ public class Administrador {
                 for (Piso a : this.pisos) {
                     if (a.getIdentificador() == pisoNuevo) {//ve que el pisoexiste
                         for (Habitacion b : a.getHabitaciones()) {//recorre habitaciones
-                            if (b.getNumCuarto() == NuevoNumeroDeHabitacion && b.isDisponibilidad()) {//verifica que el numero de cuarto y que este disponible
+                            if (b.getNumCuarto() == NuevoNumeroDeHabitacion) {//verifica que el numero de cuarto y que este disponible
                                 ReservaAModificar.setHabitacion(b);// si es verdadero pide los datos para modificar habitacion
+                                ReservaAModificar.setPiso(a);
                                 this.reservas.set(NumeroReservaAModificar - 1, ReservaAModificar);
                                 System.out.println("Habitacion modificada!");
+                                System.out.println("");
                                 break;
                             }
                         }
@@ -615,15 +640,20 @@ public class Administrador {
                 Scanner input3 = new Scanner(System.in);
                 System.out.print("Nuevo paquete para la reserva: ");
                 String NuevoNombrePaquete = input3.nextLine().toUpperCase();
+                boolean neko = false;
 
                 for (Paquete a : this.paquetes) {
-                    if (a.getNombre() == NuevoNombrePaquete) {
+                    if (a.getNombre().equals(NuevoNombrePaquete)) {
                         ReservaAModificar.setPaquete(a);
                         this.reservas.set(NumeroReservaAModificar - 1, ReservaAModificar);
                         System.out.println("Paquete modificado!");
                         System.out.println("");
+                        neko = true;
                         break;
                     }
+                }
+                if (neko == false) {
+                    System.out.println("El paquete escogido no existe.");
                 }
                 break;
             case 4:
@@ -654,6 +684,8 @@ public class Administrador {
         System.out.print("Numero de reserva a eliminar: ");
         int reserva = input.nextInt();
         this.reservas.remove(reserva - 1);//elimina la reserva de la lista
+        System.out.println("Se elimino la reserva! :D");
+        System.out.println("");
 
     }
 
@@ -669,7 +701,7 @@ public class Administrador {
         System.out.println("** MENU CONFIGURACION **");
         System.out.println("1. Eliminar reservacion ");
         System.out.println("2. Modificar reserva ");
-        System.out.println("3. Ver reservaciones ");
+        System.out.println("3. Crear Huesped");
         System.out.println("4. Agregar Piso ");
         System.out.println("5. Eliminar Piso ");
         System.out.println("6. Borrar Habitacion");
@@ -694,7 +726,7 @@ public class Administrador {
                 ModificarReserva();
                 break;
             case 3:
-                VerReserva();
+                CreacionHuesped();
                 break;
             case 4:
                 System.out.print("Cual es el identificador del piso que desea agregar: ");
