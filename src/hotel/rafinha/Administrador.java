@@ -212,6 +212,8 @@ public class Administrador {
                     pisoExiste = true;
                     this.pisos.remove(a);//se elimina el piso de la lista PISOS
                     System.out.println("Piso Eliminado");
+                    System.out.println("");
+                    return;
                 }
             }
         }
@@ -234,6 +236,13 @@ public class Administrador {
         }
         if (pisoExiste == false) { //si los identificadores no coinciden entonces se agrega el nuevo piso
             Piso pisoNuevo = new Piso(identificador);
+            int hab = 1;
+            while (hab <= 10) {
+                Habitacion habitacion = new Habitacion(hab, true, pisoNuevo, 200);
+                pisoNuevo.habitaciones.add(habitacion);
+                hab++;
+            }
+            this.pisos.add(pisoNuevo);
             System.out.println("Piso agregado!");
             System.out.println("");
         }
@@ -411,13 +420,12 @@ public class Administrador {
         char piso;
 
         Scanner input = new Scanner(System.in);
+        System.out.println("Pisos existentes: ");
         for (Piso a : this.pisos) {
-            for (Habitacion b : a.getHabitaciones()) {//se recorren las habitaciones
-                System.out.println("Numero de habitacion: " + b.getNumCuarto() + " Piso de habitacion: " + b.getPiso() + " Disponibilidad: " + b.isDisponibilidad());
-            }
+            System.out.println("Piso: " + a.getIdentificador() + " Cantidad de habitaciones: " + a.getHabitaciones().size());
         }
-        System.out.print("Piso donde se encuentra habitaciÃƒÂ³n: ");
-        piso = input.next().charAt(0);
+        System.out.print("Piso donde se encuentra habitacion: ");
+        piso = input.next().toUpperCase().charAt(0);
         System.out.print("Numero de habitacion: ");
         habitacion = input.nextInt();
 
@@ -426,6 +434,7 @@ public class Administrador {
                 for (Habitacion b : a.getHabitaciones()) {//si el identificador ingresado coincide con las hbaitaciones existente
                     if (b.getNumCuarto() == habitacion) {//si el numero de cuarto ingresado con un habitacion existemte
                         b.setDisponibilidad(false);
+                        System.out.println("Habitacion #" + b.getNumCuarto() + " En el piso: " + a.getIdentificador() + " ha sido deshabilitada.");
                     }
                 }
             }
@@ -616,8 +625,13 @@ public class Administrador {
                 AgregarPiso(piso);
                 break;
             case 5:
-                System.out.println("Ingrese el identificador del piso que desea eliminar: ");
-                char piso1 = input.next().charAt(0);//Obtiene el identidicador que se desea eliminar
+                System.out.println("Pisos existentes: ");
+                for (Piso a : this.pisos) {
+                    System.out.print(a.getIdentificador()+" ");
+                }
+                System.out.println("");
+                System.out.print("Ingrese el identificador del piso que desea eliminar: ");
+                char piso1 = input.next().toUpperCase().charAt(0);//Obtiene el identidicador que se desea eliminar
                 BorrarPiso(piso1);
                 break;
             case 6:
