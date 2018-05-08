@@ -681,11 +681,13 @@ public class Administrador {
                 break;
             case 11:
                 int newPrecio;
+                System.out.println("Nuevo precio base para habitaciones simples: ");
                 newPrecio = lector.nextInt();
                 CambiarPrecioBaseSimple(newPrecio);
                 break;
             case 12:
                 int newPrecio1;
+                System.out.println("Nuevo precio base para habitaciones dobles: ");
                 newPrecio1 = lector.nextInt();
                 CambiarPrecioBaseDoble(newPrecio1);
                 break;
